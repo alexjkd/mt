@@ -1,0 +1,6 @@
+[09-Mar-2016 16:47:35 UTC] PHP Fatal error:  Call to undefined function sqlquery() in /home/czyusa1973/public_html/mt/rank/seoclicks.php on line 46
+[09-Mar-2016 19:17:38 UTC] PHP Fatal error:  Call to undefined function sqlquery() in /home/czyusa1973/public_html/mt/rank/seoclicks.php on line 46
+[09-Mar-2016 19:18:36 UTC] PHP Fatal error:  Call to undefined function sqlquery() in /home/czyusa1973/public_html/mt/rank/seoclicks.php on line 46
+[09-Mar-2016 19:18:41 UTC] PHP Fatal error:  Call to undefined function sqlquery() in /home/czyusa1973/public_html/mt/rank/seoclicks.php on line 46
+[18-Mar-2016 14:41:52 America/New_York] PHP Fatal error:  Call to undefined function lidsummary() in /home/czyusa1973/public_html/mt/rank/seoclicks.php on line 31
+[18-Mar-2016 14:42:01 America/New_York] PHP Fatal error:  Call to undefined function oidsummary() in /home/czyusa1973/public_html/mt/rank/seoclicks.php on line 34

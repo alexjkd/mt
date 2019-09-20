@@ -1,0 +1,60 @@
+[21-Apr-2016 11:04:29 America/New_York] PHP Fatal error:  Allowed memory size of 536870912 bytes exhausted (tried to allocate 703775942 bytes) in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 100
+[20-May-2016 13:55:28 America/New_York] PHP Fatal error:  Call to undefined function lidsummary() in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 50
+[02-Aug-2016 18:02:55 America/New_York] PHP Fatal error:  Function name must be a string in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 60
+[02-Aug-2016 18:03:03 America/New_York] PHP Fatal error:  Function name must be a string in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 60
+[15-Dec-2016 13:50:16 America/New_York] PHP Notice:  Undefined variable: rows in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 96
+[06-Jan-2017 10:55:33 America/New_York] PHP Notice:  Undefined variable: rows in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 96
+[09-Jan-2017 13:51:40 America/New_York] PHP Notice:  Undefined variable: rows in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 96
+[09-Jan-2017 13:55:44 America/New_York] PHP Notice:  Undefined variable: rows in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 96
+[12-Jan-2017 13:42:53 America/New_York] PHP Notice:  Undefined variable: rows in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 96
+[12-Jan-2017 22:33:13 America/New_York] PHP Notice:  Undefined variable: rows in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 96
+[16-Mar-2017 16:41:33 America/New_York] PHP Notice:  Undefined variable: rows in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 96
+[16-Mar-2017 16:42:42 America/New_York] PHP Notice:  Undefined variable: rows in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 96
+[05-Apr-2017 15:28:15 America/New_York] PHP Notice:  Undefined variable: rows in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 96
+[05-Apr-2017 15:28:15 America/New_York] PHP Notice:  Undefined variable: rows in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 96
+[05-Apr-2017 15:28:15 America/New_York] PHP Notice:  Undefined variable: rows in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 96
+[05-Apr-2017 15:28:15 America/New_York] PHP Notice:  Undefined variable: rows in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 96
+[06-Apr-2017 09:05:13 America/New_York] PHP Notice:  Undefined variable: rows in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 96
+[28-Sep-2017 14:43:28 America/New_York] PHP Notice:  Undefined variable: rows in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 96
+[30-Jan-2018 15:26:40 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 26
+[30-Jan-2018 15:26:40 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 80
+[30-Jan-2018 15:26:40 America/New_York] PHP Notice:  Undefined variable: rows in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 98
+[14-Mar-2019 12:18:16 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 26
+[14-Mar-2019 12:18:16 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 80
+[14-Mar-2019 12:18:16 America/New_York] PHP Notice:  Undefined variable: rows in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 98
+[22-Mar-2019 09:09:24 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 26
+[22-Mar-2019 09:09:24 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 80
+[22-Mar-2019 09:09:24 America/New_York] PHP Notice:  Undefined variable: rows in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 98
+[29-May-2019 07:23:31 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 26
+[29-May-2019 07:23:31 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 80
+[29-May-2019 07:23:31 America/New_York] PHP Notice:  Undefined variable: rows in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 98
+[29-May-2019 07:23:58 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 26
+[29-May-2019 07:23:58 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 80
+[29-May-2019 07:23:58 America/New_York] PHP Notice:  Undefined variable: rows in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 98
+[29-May-2019 07:24:05 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 26
+[29-May-2019 07:24:05 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 80
+[29-May-2019 07:24:05 America/New_York] PHP Notice:  Undefined variable: rows in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 98
+[24-Jul-2019 09:58:23 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 26
+[24-Jul-2019 09:58:23 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 80
+[24-Jul-2019 09:58:23 America/New_York] PHP Notice:  Undefined variable: rows in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 98
+[26-Jul-2019 10:31:09 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 26
+[26-Jul-2019 10:31:09 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 80
+[26-Jul-2019 10:31:09 America/New_York] PHP Notice:  Undefined variable: rows in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 98
+[05-Aug-2019 13:47:23 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 26
+[05-Aug-2019 13:47:23 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 80
+[05-Aug-2019 13:47:23 America/New_York] PHP Notice:  Undefined variable: rows in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 98
+[27-Aug-2019 22:30:03 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 26
+[27-Aug-2019 22:30:03 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 80
+[27-Aug-2019 22:30:03 America/New_York] PHP Notice:  Undefined variable: rows in /home/czyusa1973/public_html/mt/rank/linkgroupclicks.php on line 98
+[18-Sep-2019 09:54:14 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /var/www/html/codiad/workspace/mt/rank/linkgroupclicks.php on line 26
+[18-Sep-2019 09:54:14 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /var/www/html/codiad/workspace/mt/rank/linkgroupclicks.php on line 79
+[18-Sep-2019 09:54:14 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /var/www/html/codiad/workspace/mt/rank/linkgroupclicks.php on line 80
+[18-Sep-2019 09:54:14 America/New_York] PHP Notice:  Undefined variable: rows in /var/www/html/codiad/workspace/mt/rank/linkgroupclicks.php on line 98
+[18-Sep-2019 09:54:16 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /var/www/html/codiad/workspace/mt/rank/linkgroupclicks.php on line 26
+[18-Sep-2019 09:54:16 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /var/www/html/codiad/workspace/mt/rank/linkgroupclicks.php on line 79
+[18-Sep-2019 09:54:16 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /var/www/html/codiad/workspace/mt/rank/linkgroupclicks.php on line 80
+[18-Sep-2019 09:54:16 America/New_York] PHP Notice:  Undefined variable: rows in /var/www/html/codiad/workspace/mt/rank/linkgroupclicks.php on line 98
+[18-Sep-2019 09:54:16 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /var/www/html/codiad/workspace/mt/rank/linkgroupclicks.php on line 26
+[18-Sep-2019 09:54:16 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /var/www/html/codiad/workspace/mt/rank/linkgroupclicks.php on line 79
+[18-Sep-2019 09:54:16 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /var/www/html/codiad/workspace/mt/rank/linkgroupclicks.php on line 80
+[18-Sep-2019 09:54:16 America/New_York] PHP Notice:  Undefined variable: rows in /var/www/html/codiad/workspace/mt/rank/linkgroupclicks.php on line 98

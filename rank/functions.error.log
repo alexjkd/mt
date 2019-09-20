@@ -1,0 +1,28 @@
+[29-Oct-2015 02:34:45 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'markettracker'@'localhost' (using password: NO)' in /home/czyusa1973/public_html/lib/db.php:9
+Stack trace:
+#0 /home/czyusa1973/public_html/lib/db.php(9): PDO->__construct('mysql:dbname=ma...', 'markettracker', '')
+#1 /home/czyusa1973/public_html/lib/functions.php(8): db::getInstance()
+#2 /home/czyusa1973/public_html/rankmon/amazon.bestsellerrank.import.php(3): include_once('/home/czyusa197...')
+#3 {main}
+  thrown in /home/czyusa1973/public_html/lib/db.php on line 9
+[29-Oct-2015 07:29:22 America/New_York] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'markettracker.keywordrank_kws' doesn't exist' in /home/czyusa1973/public_html/mt/rankmon/index.php:41
+Stack trace:
+#0 /home/czyusa1973/public_html/mt/rankmon/index.php(41): PDO->query('select distinct...')
+#1 {main}
+  thrown in /home/czyusa1973/public_html/mt/rankmon/index.php on line 41
+[29-Oct-2015 08:38:30 America/New_York] PHP Fatal error:  Call to a member function find() on a non-object in /home/czyusa1973/public_html/mt/lib/functions.php on line 95
+[29-Oct-2015 09:38:48 America/New_York] PHP Fatal error:  Call to a member function find() on a non-object in /home/czyusa1973/public_html/mt/lib/functions.php on line 95
+[30-Oct-2015 22:01:43 America/New_York] PHP Fatal error:  Call to a member function rowCount() on a non-object in /home/czyusa1973/public_html/mt/rank/amazon.bestsellerrank.import.php on line 7
+[30-Oct-2015 22:01:50 America/New_York] PHP Fatal error:  Call to a member function rowCount() on a non-object in /home/czyusa1973/public_html/mt/rank/amazon.bestsellerrank.import.php on line 7
+[06-Nov-2015 13:01:17 America/New_York] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000]: General error: 2006 MySQL server has gone away' in /home/czyusa1973/public_html/mt/lib/functions.php:60
+Stack trace:
+#0 /home/czyusa1973/public_html/mt/lib/functions.php(60): PDO->query('SHOW TABLES LIK...')
+#1 /home/czyusa1973/public_html/mt/rank/amazon.bestsellerrank.import.php(17): sqlquery('create TABLE ab...')
+#2 {main}
+  thrown in /home/czyusa1973/public_html/mt/lib/functions.php on line 60
+[06-Nov-2015 14:02:17 America/New_York] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000]: General error: 2006 MySQL server has gone away' in /home/czyusa1973/public_html/mt/lib/functions.php:60
+Stack trace:
+#0 /home/czyusa1973/public_html/mt/lib/functions.php(60): PDO->query('SHOW TABLES LIK...')
+#1 /home/czyusa1973/public_html/mt/rank/amazon.bestsellerrank.import.php(17): sqlquery('create TABLE ab...')
+#2 {main}
+  thrown in /home/czyusa1973/public_html/mt/lib/functions.php on line 60

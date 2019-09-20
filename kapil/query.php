@@ -1,0 +1,1 @@
+SELECT mws_id,mws_model, price, rank FROM `mws` m JOIN category c ON c.mws_id = m.id WHERE m.updated_on > DATE_SUB(NOW(), INTERVAL 1 HOUR) ORDER BY mws_model, m.updated_on DESC

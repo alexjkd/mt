@@ -1,0 +1,4 @@
+[10-Jan-2017 09:02:34 America/New_York] PHP Notice:  Undefined index: site in /home/czyusa1973/public_html/mt/rank/amz_seoclicks_rankmon.php on line 22
+[10-Jan-2017 09:02:34 America/New_York] PHP Notice:  Undefined index: kw in /home/czyusa1973/public_html/mt/rank/amz_seoclicks_rankmon.php on line 23
+[10-Jan-2017 09:02:34 America/New_York] PHP Notice:  Undefined index: asin in /home/czyusa1973/public_html/mt/rank/amz_seoclicks_rankmon.php on line 24
+[10-Jan-2017 09:02:35 America/New_York] PHP Notice:  Undefined variable: rows in /home/czyusa1973/public_html/mt/rank/amz_seoclicks_rankmon.php on line 114

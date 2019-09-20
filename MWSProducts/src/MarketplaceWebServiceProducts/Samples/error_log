@@ -1,0 +1,136 @@
+[18-Feb-2019 05:07:32 America/Chicago] PHP Deprecated:  iconv_set_encoding(): Use of iconv.output_encoding is deprecated in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Client.php on line 899
+[18-Feb-2019 05:07:32 America/Chicago] PHP Deprecated:  iconv_set_encoding(): Use of iconv.input_encoding is deprecated in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Client.php on line 900
+[18-Feb-2019 05:07:32 America/Chicago] PHP Deprecated:  iconv_set_encoding(): Use of iconv.internal_encoding is deprecated in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Client.php on line 901
+[18-Feb-2019 05:10:55 America/Chicago] PHP Deprecated:  iconv_set_encoding(): Use of iconv.output_encoding is deprecated in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Client.php on line 899
+[18-Feb-2019 05:10:55 America/Chicago] PHP Deprecated:  iconv_set_encoding(): Use of iconv.input_encoding is deprecated in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Client.php on line 900
+[18-Feb-2019 05:10:55 America/Chicago] PHP Deprecated:  iconv_set_encoding(): Use of iconv.internal_encoding is deprecated in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Client.php on line 901
+[18-Feb-2019 05:11:48 America/Chicago] PHP Deprecated:  iconv_set_encoding(): Use of iconv.output_encoding is deprecated in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Client.php on line 899
+[18-Feb-2019 05:11:48 America/Chicago] PHP Deprecated:  iconv_set_encoding(): Use of iconv.input_encoding is deprecated in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Client.php on line 900
+[18-Feb-2019 05:11:48 America/Chicago] PHP Deprecated:  iconv_set_encoding(): Use of iconv.internal_encoding is deprecated in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Client.php on line 901
+[18-Feb-2019 05:18:09 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function getElementsByTagName() on string in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php:105
+Stack trace:
+#0 /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php(80): invokeGetMatchingProduct(Object(MarketplaceWebServiceProducts_Mock), Object(MarketplaceWebServiceProducts_Model_GetMatchingProductRequest))
+#1 {main}
+  thrown in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 105
+[18-Feb-2019 05:19:23 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function getElementsByTagName() on string in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php:105
+Stack trace:
+#0 /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php(80): invokeGetMatchingProduct(Object(MarketplaceWebServiceProducts_Mock), Object(MarketplaceWebServiceProducts_Model_GetMatchingProductRequest))
+#1 {main}
+  thrown in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 105
+[18-Feb-2019 06:25:16 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined method DOMNodeList::getElementsByTagName() in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php:109
+Stack trace:
+#0 /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php(80): invokeGetMatchingProduct(Object(MarketplaceWebServiceProducts_Mock), Object(MarketplaceWebServiceProducts_Model_GetMatchingProductRequest))
+#1 {main}
+  thrown in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 109
+[18-Feb-2019 06:26:09 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined method DOMNodeList::getElementsByTagName() in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php:109
+Stack trace:
+#0 /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php(80): invokeGetMatchingProduct(Object(MarketplaceWebServiceProducts_Mock), Object(MarketplaceWebServiceProducts_Model_GetMatchingProductRequest))
+#1 {main}
+  thrown in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 109
+[18-Feb-2019 06:27:47 America/Chicago] PHP Catchable fatal error:  Object of class DOMNodeList could not be converted to string in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 109
+[18-Feb-2019 06:28:07 America/Chicago] PHP Catchable fatal error:  Object of class DOMNodeList could not be converted to string in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 109
+[18-Feb-2019 06:33:37 America/Chicago] PHP Catchable fatal error:  Object of class DOMNodeList could not be converted to string in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 109
+[18-Feb-2019 06:34:11 America/Chicago] PHP Catchable fatal error:  Object of class DOMElement could not be converted to string in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 110
+[18-Feb-2019 06:34:14 America/Chicago] PHP Catchable fatal error:  Object of class DOMElement could not be converted to string in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 110
+[18-Feb-2019 06:34:17 America/Chicago] PHP Catchable fatal error:  Object of class DOMElement could not be converted to string in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 110
+[18-Feb-2019 06:34:38 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined method DOMElement::nodeValue() in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php:110
+Stack trace:
+#0 /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php(80): invokeGetMatchingProduct(Object(MarketplaceWebServiceProducts_Mock), Object(MarketplaceWebServiceProducts_Model_GetMatchingProductRequest))
+#1 {main}
+  thrown in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 110
+[18-Feb-2019 06:37:35 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 109
+[18-Feb-2019 06:37:46 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 109
+[18-Feb-2019 06:37:48 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 109
+[18-Feb-2019 06:40:33 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 109
+[18-Feb-2019 07:39:12 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 109
+[18-Feb-2019 07:39:16 America/Chicago] PHP Warning:  Invalid argument supplied for foreach() in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 109
+[19-Feb-2019 00:00:05 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined method DOMNodeList::children() in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php:109
+Stack trace:
+#0 /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php(80): invokeGetMatchingProduct(Object(MarketplaceWebServiceProducts_Mock), Object(MarketplaceWebServiceProducts_Model_GetMatchingProductRequest))
+#1 {main}
+  thrown in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 109
+[19-Feb-2019 00:00:05 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined method DOMNodeList::children() in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php:109
+Stack trace:
+#0 /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php(80): invokeGetMatchingProduct(Object(MarketplaceWebServiceProducts_Mock), Object(MarketplaceWebServiceProducts_Model_GetMatchingProductRequest))
+#1 {main}
+  thrown in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 109
+[19-Feb-2019 00:03:44 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined method DOMNodeList::children() in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php:109
+Stack trace:
+#0 /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php(80): invokeGetMatchingProduct(Object(MarketplaceWebServiceProducts_Mock), Object(MarketplaceWebServiceProducts_Model_GetMatchingProductRequest))
+#1 {main}
+  thrown in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 109
+[19-Feb-2019 00:06:45 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined method DOMNodeList::children() in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php:109
+Stack trace:
+#0 /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php(80): invokeGetMatchingProduct(Object(MarketplaceWebServiceProducts_Mock), Object(MarketplaceWebServiceProducts_Model_GetMatchingProductRequest))
+#1 {main}
+  thrown in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 109
+[19-Feb-2019 00:07:03 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined method DOMNodeList::children() in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php:109
+Stack trace:
+#0 /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php(80): invokeGetMatchingProduct(Object(MarketplaceWebServiceProducts_Mock), Object(MarketplaceWebServiceProducts_Model_GetMatchingProductRequest))
+#1 {main}
+  thrown in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 109
+[19-Feb-2019 00:07:17 America/Chicago] PHP Fatal error:  Uncaught Error: Function name must be a string in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php:104
+Stack trace:
+#0 /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php(80): invokeGetMatchingProduct(Object(MarketplaceWebServiceProducts_Mock), Object(MarketplaceWebServiceProducts_Model_GetMatchingProductRequest))
+#1 {main}
+  thrown in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 104
+[19-Feb-2019 00:07:37 America/Chicago] PHP Warning:  simplexml_load_string() expects parameter 1 to be string, object given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 104
+[19-Feb-2019 00:09:36 America/Chicago] PHP Warning:  simplexml_load_string() expects parameter 1 to be string, object given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 104
+[19-Feb-2019 00:09:53 America/Chicago] PHP Warning:  simplexml_load_string() expects parameter 1 to be string, object given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 104
+[19-Feb-2019 00:09:55 America/Chicago] PHP Warning:  simplexml_load_string() expects parameter 1 to be string, object given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 104
+[19-Feb-2019 00:10:48 America/Chicago] PHP Warning:  simplexml_load_string() expects parameter 1 to be string, object given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 105
+[19-Feb-2019 00:13:46 America/Chicago] PHP Warning:  simplexml_load_string() expects parameter 1 to be string, object given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 105
+[19-Feb-2019 00:37:47 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined method DOMNodeList::children() in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php:109
+Stack trace:
+#0 /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php(80): invokeGetMatchingProduct(Object(MarketplaceWebServiceProducts_Mock), Object(MarketplaceWebServiceProducts_Model_GetMatchingProductRequest))
+#1 {main}
+  thrown in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 109
+[19-Feb-2019 02:01:39 America/Chicago] PHP Parse error:  syntax error, unexpected ',' in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 132
+[19-Feb-2019 02:01:45 America/Chicago] PHP Parse error:  syntax error, unexpected ',' in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 132
+[19-Feb-2019 02:05:07 America/Chicago] PHP Parse error:  syntax error, unexpected ',' in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 132
+[19-Feb-2019 02:05:46 America/Chicago] PHP Parse error:  syntax error, unexpected ',' in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 132
+[19-Feb-2019 02:06:19 America/Chicago] PHP Parse error:  syntax error, unexpected ',' in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 132
+[19-Feb-2019 02:06:22 America/Chicago] PHP Parse error:  syntax error, unexpected ',' in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 132
+[19-Feb-2019 02:06:24 America/Chicago] PHP Parse error:  syntax error, unexpected ',' in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 132
+[19-Feb-2019 02:07:29 America/Chicago] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 132
+[19-Feb-2019 02:10:20 America/Chicago] PHP Warning:  mysqli_connect(): (HY000/2005): Unknown MySQL server host 'locahost' (0) in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 132
+[19-Feb-2019 02:10:20 America/Chicago] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 132
+[19-Feb-2019 02:10:38 America/Chicago] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 132
+[19-Feb-2019 02:10:38 America/Chicago] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 132
+[19-Feb-2019 03:11:30 America/Chicago] PHP Parse error:  syntax error, unexpected '$sql' (T_VARIABLE) in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 138
+[19-Feb-2019 03:12:00 America/Chicago] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 137
+[19-Feb-2019 03:12:00 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 139
+[19-Feb-2019 03:12:00 America/Chicago] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 142
+[19-Feb-2019 03:12:00 America/Chicago] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 144
+[19-Feb-2019 03:15:20 America/Chicago] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 137
+[19-Feb-2019 03:15:20 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 139
+[19-Feb-2019 03:15:20 America/Chicago] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 142
+[19-Feb-2019 03:15:20 America/Chicago] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 144
+[19-Feb-2019 03:15:51 America/Chicago] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 137
+[19-Feb-2019 03:15:51 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 139
+[19-Feb-2019 03:15:51 America/Chicago] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 142
+[19-Feb-2019 03:15:51 America/Chicago] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 144
+[19-Feb-2019 03:23:43 America/Chicago] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 137
+[19-Feb-2019 03:23:43 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 139
+[19-Feb-2019 03:23:43 America/Chicago] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 142
+[19-Feb-2019 03:23:43 America/Chicago] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 144
+[19-Feb-2019 03:25:53 America/Chicago] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 132
+[19-Feb-2019 03:25:53 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 134
+[19-Feb-2019 03:25:53 America/Chicago] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 137
+[19-Feb-2019 03:25:53 America/Chicago] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 139
+[19-Feb-2019 03:26:06 America/Chicago] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 132
+[19-Feb-2019 03:26:06 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 134
+[19-Feb-2019 03:26:06 America/Chicago] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 137
+[19-Feb-2019 03:26:06 America/Chicago] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 139
+[19-Feb-2019 03:26:23 America/Chicago] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 132
+[19-Feb-2019 03:26:23 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 134
+[19-Feb-2019 03:26:23 America/Chicago] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 137
+[19-Feb-2019 03:26:23 America/Chicago] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 139
+[19-Feb-2019 04:30:28 America/Chicago] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 126
+[19-Feb-2019 04:30:28 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 128
+[19-Feb-2019 04:30:28 America/Chicago] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 131
+[19-Feb-2019 04:30:28 America/Chicago] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 133
+[20-Feb-2019 03:34:42 America/Chicago] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'root'@'localhost' (using password: YES) in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 126
+[20-Feb-2019 03:34:42 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 128
+[20-Feb-2019 03:34:42 America/Chicago] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 131
+[20-Feb-2019 03:34:42 America/Chicago] PHP Warning:  mysqli_close() expects parameter 1 to be mysqli, boolean given in /home3/think14d/vacantpost.org/MWSProducts/src/MarketplaceWebServiceProducts/Samples/GetMatchingProductSample.php on line 133

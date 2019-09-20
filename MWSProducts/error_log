@@ -1,0 +1,80 @@
+[20-Feb-2019 03:58:42 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'MarketplaceWebServiceProducts_Client' not found in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php:55
+Stack trace:
+#0 {main}
+  thrown in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 55
+[20-Feb-2019 03:58:42 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'MarketplaceWebServiceProducts_Client' not found in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php:55
+Stack trace:
+#0 {main}
+  thrown in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 55
+[20-Feb-2019 04:02:48 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'MarketplaceWebServiceProducts_Client' not found in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php:55
+Stack trace:
+#0 {main}
+  thrown in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 55
+[20-Feb-2019 04:03:09 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'MarketplaceWebServiceProducts_Client' not found in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php:55
+Stack trace:
+#0 {main}
+  thrown in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 55
+[20-Feb-2019 04:03:50 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'MarketplaceWebServiceProducts_Client' not found in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php:55
+Stack trace:
+#0 {main}
+  thrown in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 55
+[20-Feb-2019 04:04:22 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'MarketplaceWebServiceProducts_Client' not found in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php:55
+Stack trace:
+#0 {main}
+  thrown in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 55
+[20-Feb-2019 04:04:24 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'MarketplaceWebServiceProducts_Client' not found in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php:55
+Stack trace:
+#0 {main}
+  thrown in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 55
+[20-Feb-2019 04:05:14 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'MarketplaceWebServiceProducts_Client' not found in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php:55
+Stack trace:
+#0 {main}
+  thrown in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 55
+[20-Feb-2019 04:06:22 America/Chicago] PHP Fatal error:  Uncaught Error: Class 'MarketplaceWebServiceProducts_Client' not found in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php:55
+Stack trace:
+#0 {main}
+  thrown in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 55
+[20-Feb-2019 04:09:35 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 136
+[20-Feb-2019 04:09:47 America/Chicago] PHP Parse error:  syntax error, unexpected '}' in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 136
+[20-Feb-2019 04:09:54 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 135
+[20-Feb-2019 04:09:54 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 135
+[20-Feb-2019 04:11:15 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 135
+[20-Feb-2019 04:11:15 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 135
+[20-Feb-2019 04:11:56 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 135
+[20-Feb-2019 04:11:56 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 135
+[20-Feb-2019 04:12:01 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 135
+[20-Feb-2019 04:12:01 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 135
+[20-Feb-2019 04:13:20 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 136
+[20-Feb-2019 04:13:20 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 136
+[20-Feb-2019 04:13:29 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 136
+[20-Feb-2019 04:13:29 America/Chicago] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 136
+[20-Feb-2019 04:25:34 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php:137
+Stack trace:
+#0 /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php(84): invokeGetMatchingProduct(Object(MarketplaceWebServiceProducts_Mock), Object(MarketplaceWebServiceProducts_Model_GetMatchingProductRequest))
+#1 {main}
+  thrown in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 137
+[20-Feb-2019 04:26:40 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php:138
+Stack trace:
+#0 /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php(84): invokeGetMatchingProduct(Object(MarketplaceWebServiceProducts_Mock), Object(MarketplaceWebServiceProducts_Model_GetMatchingProductRequest))
+#1 {main}
+  thrown in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 138
+[20-Feb-2019 04:28:32 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php:138
+Stack trace:
+#0 /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php(84): invokeGetMatchingProduct(Object(MarketplaceWebServiceProducts_Mock), Object(MarketplaceWebServiceProducts_Model_GetMatchingProductRequest))
+#1 {main}
+  thrown in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 138
+[20-Feb-2019 04:29:00 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php:138
+Stack trace:
+#0 /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php(84): invokeGetMatchingProduct(Object(MarketplaceWebServiceProducts_Mock), Object(MarketplaceWebServiceProducts_Model_GetMatchingProductRequest))
+#1 {main}
+  thrown in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 138
+[20-Feb-2019 04:29:02 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php:138
+Stack trace:
+#0 /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php(84): invokeGetMatchingProduct(Object(MarketplaceWebServiceProducts_Mock), Object(MarketplaceWebServiceProducts_Model_GetMatchingProductRequest))
+#1 {main}
+  thrown in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 138
+[20-Feb-2019 04:37:40 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ',' or ')' in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 131
+[20-Feb-2019 04:37:40 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ',' or ')' in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 131
+[20-Feb-2019 04:37:46 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ',' or ')' in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 131
+[20-Feb-2019 04:37:48 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ',' or ')' in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 131
+[20-Feb-2019 04:37:57 America/Chicago] PHP Parse error:  syntax error, unexpected ';', expecting ',' or ')' in /home3/think14d/vacantpost.org/MWSProducts/fetch_data.php on line 131
