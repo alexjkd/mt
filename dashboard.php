@@ -1,4 +1,5 @@
 <?php
+//include_once(dirname(__FILE__) . "/lib/functions.php");
 include_once(dirname(__FILE__) . "/lib/functions.php");
 include_once(dirname(__FILE__) . "/lib/phplot.6.1.0.php");
 
@@ -583,7 +584,7 @@ function GroupPriceAvgratingReivew($group, $aH, $alter = '')
         if ($h == 'rank1') $q1 = "SELECT dtime $q1Sub FROM (SELECT date_format(updated - INTERVAL HOUR(updated)%$interval HOUR,'$dateFormat') as dtime,asin $qBaseSub FROM mws_us WHERE asin IN ('$sAsins') AND $h > 0 AND $rank1_date_sql  GROUP BY asin, dtime HAVING $sh>0 ) a GROUP BY dtime ORDER BY dtime DESC"; //limit 2
         else $q1 = "SELECT dtime $q1Sub FROM (SELECT date_format(from_unixtime(time+$timeoffset),'$dateFormat') as dtime, asin $qBaseSub FROM $table WHERE asin IN ('$sAsins') AND $h > 0 AND $date_sql GROUP BY asin, dtime HAVING $sh>0 ) a GROUP BY dtime ORDER BY dtime DESC"; //limit 2
         //echo "<pre>$q1</pre>"; //testing
-        $aMapData = melonQuery($q1);
+        $aMapData = sqlquery($q1);
         if ($h == 'rank1') {
             $sql1 = "SELECT dtime,dtime2 $q1Sub FROM (SELECT date_format(updated - INTERVAL HOUR(updated)%$interval HOUR,'$dateFormat') as dtime, date_format(updated - INTERVAL HOUR(updated)%$interval HOUR,'%Y-%b-%d %l:00%p') as dtime2,asin $qBaseSub FROM mws_us WHERE asin IN ('$sAsins') AND $h > 0 AND $rank1_date_sql  GROUP BY asin, dtime,dtime2 HAVING $sh>0 ) a GROUP BY dtime,dtime2 ORDER BY dtime DESC"; //limit 2
 
