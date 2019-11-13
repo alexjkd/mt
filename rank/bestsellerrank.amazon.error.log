@@ -57,3 +57,12 @@
 [28-Aug-2019 02:51:43 America/New_York] PHP Notice:  Undefined variable: rows in /home/czyusa1973/public_html/mt/rank/bestsellerrank.amazon.php on line 59
 [28-Aug-2019 02:51:48 America/New_York] PHP Notice:  Use of undefined constant EMAIL_RECEPIENTS - assumed 'EMAIL_RECEPIENTS' in /home/czyusa1973/public_html/mt/rank/bestsellerrank.amazon.php on line 16
 [28-Aug-2019 02:51:48 America/New_York] PHP Notice:  Undefined variable: rows in /home/czyusa1973/public_html/mt/rank/bestsellerrank.amazon.php on line 59
+[09-Oct-2019 21:20:35 America/New_York] PHP Warning:  Use of undefined constant EMAIL_RECEPIENTS - assumed 'EMAIL_RECEPIENTS' (this will throw an Error in a future version of PHP) in /var/www/html/codiad/workspace/mt/rank/bestsellerrank.amazon.php on line 16
+[09-Oct-2019 21:20:35 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /var/www/html/codiad/workspace/mt/rank/bestsellerrank.amazon.php on line 58
+[09-Oct-2019 21:20:35 America/New_York] PHP Notice:  Undefined variable: rows in /var/www/html/codiad/workspace/mt/rank/bestsellerrank.amazon.php on line 61
+[12-Oct-2019 02:16:38 America/New_York] PHP Warning:  Use of undefined constant EMAIL_RECEPIENTS - assumed 'EMAIL_RECEPIENTS' (this will throw an Error in a future version of PHP) in /var/www/html/codiad/workspace/mt/rank/bestsellerrank.amazon.php on line 16
+[12-Oct-2019 02:16:38 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /var/www/html/codiad/workspace/mt/rank/bestsellerrank.amazon.php on line 58
+[12-Oct-2019 02:16:38 America/New_York] PHP Notice:  Undefined variable: rows in /var/www/html/codiad/workspace/mt/rank/bestsellerrank.amazon.php on line 61
+[12-Oct-2019 02:16:39 America/New_York] PHP Warning:  Use of undefined constant EMAIL_RECEPIENTS - assumed 'EMAIL_RECEPIENTS' (this will throw an Error in a future version of PHP) in /var/www/html/codiad/workspace/mt/rank/bestsellerrank.amazon.php on line 16
+[12-Oct-2019 02:16:39 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /var/www/html/codiad/workspace/mt/rank/bestsellerrank.amazon.php on line 58
+[12-Oct-2019 02:16:39 America/New_York] PHP Notice:  Undefined variable: rows in /var/www/html/codiad/workspace/mt/rank/bestsellerrank.amazon.php on line 61

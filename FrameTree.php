@@ -13,6 +13,11 @@
 
 <div id="tree_menu">
     <ul>
+	<li class="isFolder isExpanded" title="alerts">Alerts
+    <ul>
+    <li><a target="FrameContent" href="alerts.html">Alerts</a></li>
+    </ul>
+	</li>
         <li class="isFolder isExpanded" title="Bookmarks">Amazon.COM KPI
 					<ul>
 						 <li><a target="FrameContent" href="dashboard.php?list=top30">US BSR</a></li> <!-- 2016-08-17 http://czyusa.com/editor_scTu4UTrYBGA4arkTBPvfA7Uu5cn14jfhMcMvQ91i8.php?file=amazon_asin_sku_competitors.txt, homeserver F:\backup\d\it\czyusa\mt\uploads\runBSR.cmd hourly task creates and uploads BSR.csv to mt/uploads/ then processed by import.php -->

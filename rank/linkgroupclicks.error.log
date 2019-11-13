@@ -58,3 +58,11 @@
 [18-Sep-2019 09:54:16 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /var/www/html/codiad/workspace/mt/rank/linkgroupclicks.php on line 79
 [18-Sep-2019 09:54:16 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /var/www/html/codiad/workspace/mt/rank/linkgroupclicks.php on line 80
 [18-Sep-2019 09:54:16 America/New_York] PHP Notice:  Undefined variable: rows in /var/www/html/codiad/workspace/mt/rank/linkgroupclicks.php on line 98
+[09-Oct-2019 21:15:21 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /var/www/html/codiad/workspace/mt/rank/linkgroupclicks.php on line 26
+[09-Oct-2019 21:15:21 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /var/www/html/codiad/workspace/mt/rank/linkgroupclicks.php on line 79
+[09-Oct-2019 21:15:21 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /var/www/html/codiad/workspace/mt/rank/linkgroupclicks.php on line 80
+[09-Oct-2019 21:15:21 America/New_York] PHP Notice:  Undefined variable: rows in /var/www/html/codiad/workspace/mt/rank/linkgroupclicks.php on line 98
+[09-Oct-2019 21:15:38 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /var/www/html/codiad/workspace/mt/rank/linkgroupclicks.php on line 26
+[09-Oct-2019 21:15:38 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /var/www/html/codiad/workspace/mt/rank/linkgroupclicks.php on line 79
+[09-Oct-2019 21:15:38 America/New_York] PHP Warning:  Invalid argument supplied for foreach() in /var/www/html/codiad/workspace/mt/rank/linkgroupclicks.php on line 80
+[09-Oct-2019 21:15:38 America/New_York] PHP Notice:  Undefined variable: rows in /var/www/html/codiad/workspace/mt/rank/linkgroupclicks.php on line 98

@@ -7480,6 +7480,9 @@ class PHPlot
      */
     function DrawGraph()
     {
+    	/////////////////////////////////////////////
+    	 //debug_print_backtrace();
+    	 ////////////////////////////////////////////
         // Test for missing image, missing data, empty data:
         if (!$this->CheckDataArray())
             return FALSE; // Error message already reported.

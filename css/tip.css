@@ -1,0 +1,95 @@
+.tip {
+  background-color: grey;
+  color: #fafafa;
+}
+
+.tip0 {
+  background-color: red;
+  color: #fafafa;
+}
+.tip1 {
+  background-color: blue;
+  color: #fafafa;
+}
+.tip2 {
+  background-color: darkgreen;
+  color: #fafafa;
+}
+.tip3 {
+  background-color: orange;
+  color: #fafafa;
+}
+.tip4 {
+  background-color: cyan;
+  color: #fafafa;
+}
+.tip5 {
+  background-color: skyblue;
+  color: #fafafa;
+}
+.tip6 {
+  background-color: green;
+  color: #fafafa;
+}
+
+a.ispring:link,
+a.ispring:visited {
+  background-color: blue;
+  color: white;
+  padding: 4px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a.ispring:hover,
+a.ispring:active {
+  color: blue;
+  background-color: white;
+}
+
+a.compe:link,
+a.compe:visited {
+  background-color: green;
+  color: white;
+  padding: 4px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a.compe:hover,
+a.compe:active {
+  color: green;
+  background-color: white;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+table {
+  width: 10px;
+  border: 1px solid black;
+  empty-cells: hide;
+}
+
+table th > div,
+table td > div {
+  overflow: hidden;
+  height: 15px;
+  font-size: 0.875em;
+  /* 14px/16=0.875em */
+  padding: 0px;
+  border-bottom: 1px solid #ddd;
+  vertical-align: top;
+  text-align: center;
+}
+
+tr.hover:hover {
+  background-color: #f5f5f5;
+}

@@ -1,0 +1,85 @@
+<head>
+  <link rel="shortcut icon" href="mt.ico" type="image/x-icon" />
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/tip.css" />
+  <script src="js/tip.js"></script>
+  <script>
+    function groupAjax(groups) {
+      console.info(groups);
+      $.ajax({
+        url: "model/GraphData.php?show=" + groups,
+        type: "get",
+        async: true,
+        //data: JSON.stringify(da),
+        //contentType: "application/json; charset=utf-8",
+        //dataType: "json",
+        success: function(graph) {
+          //console.info(graph);
+          $("#graph").append(graph);
+        }
+      });
+    }
+    $(document).ready(function() {
+      //var da = { ckid: 1, category: 1 };
+      $.ajax({
+        url: "model/GraphData.php?groups=google",
+        type: "get",
+        async: true,
+        success: function(groupStr) {
+          //console.info(groupStr);
+          //$("#graph").html(groupStr);
+          //var groupObjs = eval("(" + groupStr + ")");
+          var groupObjs = groupStr;
+          var i = 0;
+          for (key in groupObjs) {
+            setTimeout(groupAjax(JSON.stringify(groupObjs[key])), (i + 1) * 50);
+          }
+        }
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div id="graph"></div>
+  <div
+    id="mjs:tip"
+    class="tip"
+    style="position:absolute;left:0;top:0;display:none;"
+  ></div>
+  <div
+    id="mjs:tip0"
+    class="tip0"
+    style="position:absolute;left:0;top:0;display:none;"
+  ></div>
+  <div
+    id="mjs:tip1"
+    class="tip1"
+    style="position:absolute;left:0;top:0;display:none;"
+  ></div>
+  <div
+    id="mjs:tip2"
+    class="tip2"
+    style="position:absolute;left:0;top:0;display:none;"
+  ></div>
+  <div
+    id="mjs:tip3"
+    class="tip3"
+    style="position:absolute;left:0;top:0;display:none;"
+  ></div>
+  <div
+    id="mjs:tip4"
+    class="tip4"
+    style="position:absolute;left:0;top:0;display:none;"
+  ></div>
+  <div
+    id="mjs:tip5"
+    class="tip5"
+    style="position:absolute;left:0;top:0;display:none;"
+  ></div>
+  <div
+    id="mjs:tip6"
+    class="tip6"
+    style="position:absolute;left:0;top:0;display:none;"
+  ></div>
+</body>

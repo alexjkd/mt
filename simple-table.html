@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>show google doc</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  <body style="text-align:center;">
+    <p id="json-data" style="font-size: 15px; font-weight: bold;"></p>
+
+    <table id="table" align="center" border="1px"></table>
+
+    <script>
+      $(document).ready(function() {
+        $.ajax({
+          url: "model/GraphData.php?simple-table=true",
+          type: "get",
+          async: true,
+          //data: JSON.stringify(da),
+          //contentType: "application/json; charset=utf-8",
+          //dataType: "json",
+          success: function(google_data) {
+            //console.info(graph);
+            //alert(google_data);
+            constructTable(google_data, "#table");
+          }
+        });
+      });
+
+      function constructTable(list, selector) {
+        // Getting the all column names
+        var cols = Headers(list, selector);
+
+        // Traversing the JSON data
+        for (var i = 0; i < list.length; i++) {
+          var row = $("<tr/>");
+          for (var colIndex = 0; colIndex < cols.length; colIndex++) {
+            var val = list[i][cols[colIndex]];
+
+            // If there is any key, which is matching
+            // with the column name
+            if (val == null) val = "";
+            row.append($("<td/>").html(val));
+          }
+
+          // Adding each row to the table
+          $(selector).append(row);
+        }
+      }
+
+      function Headers(list, selector) {
+        var columns = [];
+        var header = $("<tr/>");
+
+        for (var i = 0; i < list.length; i++) {
+          var row = list[i];
+
+          for (var k in row) {
+            if ($.inArray(k, columns) == -1) {
+              columns.push(k);
+
+              // Creating the header
+              header.append($("<th/>").html(k));
+            }
+          }
+        }
+
+        // Appending the header to the table
+        $(selector).append(header);
+        return columns;
+      }
+
+      function GFG_FUN() {
+        var cols = [];
+
+        for (var i = 0; i < list.length; i++) {
+          for (var k in list[i]) {
+            if (cols.indexOf(k) === -1) {
+              // Push all keys to the array
+              cols.push(k);
+            }
+          }
+        }
+
+        // Create a table element
+        var table = document.createElement("table");
+
+        // Create table row tr element of a table
+        var tr = table.insertRow(-1);
+
+        for (var i = 0; i < cols.length; i++) {
+          // Create the table header th element
+          var theader = document.createElement("th");
+          theader.innerHTML = cols[i];
+
+          // Append columnName to the table row
+          tr.appendChild(theader);
+        }
+
+        // Adding the data to the table
+        for (var i = 0; i < list.length; i++) {
+          // Create a new row
+          trow = table.insertRow(-1);
+          for (var j = 0; j < cols.length; j++) {
+            var cell = trow.insertCell(-1);
+
+            // Inserting the cell at particular place
+            cell.innerHTML = list[i][cols[j]];
+          }
+        }
+
+        // Add the newely created table containing json data
+        var el = document.getElementById("table");
+        el.innerHTML = "";
+        el.appendChild(table);
+      }
+    </script>
+  </body>
+</html>
