@@ -2,6 +2,12 @@
 
 require_once 'db.php';
 require_once ('mws_config.php');
+define("CSV_URL",1);
+  define("CSV_MODEL",2);
+  define("CSV_TIER",3);
+  define("CSV_ASSIGNEE",4);
+  define("CSV_TOP3COMP",5);
+
 
 //$csvFile = file('/uat/mt/MWSProducts/melon-test.csv');
 /*  foreach($csvFile as $sCsvLine) {
@@ -16,7 +22,8 @@ require_once ('mws_config.php');
  46 */
 
  //echo '<pre>$file='; var_dump($csvFile); echo "</pre>";
-function invokeGetMatchingProduct(MarketplaceWebServiceProducts_Interface $service, $request_product, $request_cometitor, $region)
+  function invokeGetMatchingProduct(MarketplaceWebServiceProducts_Interface $service, 
+	  $request_product, $request_cometitor, $region,$csv_owner, $csv_tier)
 {
 	$except_retry_count=0;
     try {
@@ -76,7 +83,9 @@ function invokeGetMatchingProduct(MarketplaceWebServiceProducts_Interface $servi
 	   
         {
 			$prices = $prices_info['prices'];
-		    foreach ($prices as $price) {
+			foreach ($prices as $price) {
+				$price['owner'] = $csv_owner[$asin];
+				$price['tier'] = $csv_tier[$asin];
 				$poduct_data['tier'] = $price['tier'];
 				$product_data['owner'] = $price['owner'];
 				$product_data['csv_id'] = 0;
@@ -110,27 +119,41 @@ function invokeGetMatchingProduct(MarketplaceWebServiceProducts_Interface $servi
 			 foreach($select_owner_sql as $select_owner){
 						$product_data['owner'] = $select_owner['ID'];
 			}
-			  
 				//Fetching list model of product
 			  $Price = $product->getElementsByTagName("AttributeSets");
 			  $model = $product->getElementsByTagName("Model");
 			  $seller = $product->getElementsByTagName("Brand");
 			  $part_number = $product->getElementsByTagName("PartNumber");
 			  $seller_names = explode(" ",$seller[0]->nodeValue);
-			  //var_dump($seller_names);
+			  var_dump($seller_names);
 			  $seller_show_name = strtolower($seller_names[0]);
 			  $seller_show_name = substr($seller_show_name, 0, 4);
+			  if(empty($price['owner']) && isset($csv_owner['owner']))
+			  {
+				  $price['owner']=$csv_owner['owner'];
+			  }
+			  if(empty($price['tier']) && isset($csv_tier['tier']))
+                          {
+                                  $price['tier']=$csv_tier['tier'];
+                          }
 			  printf("----------------\n");
-			  $alais = $model[0]->nodeValue; 
+			  $alais = '';
+			  if (is_object($model[0]))
+			  	$alais = $model[0]->nodeValue; 
 			  if ( empty($alais) ) {
 				  $alais = $part_number[0]->nodeValue;
 			  }
 			  if ( !empty($price['owner']))
 			  {
 				  $alais = $seller_show_name . "." . $alais . "." . $price['owner'];
-			  }
+              }
+              else if (!empty($seller_show_name))
+              {
+                  $alais = $seller_show_name . "." . $alais; 
+              }
 			  $alias_data[]=array('asin'=>$product_data['asin'], 'sku_name'=>$alais);
-			  $sku = $model[0]->nodeValue;
+			  if (is_object($model[0]))
+			  	$sku = $model[0]->nodeValue;
 			  
 			  $select_sku_sql = $mysqli->query("SELECT ID FROM mws_sku WHERE Sku = '".$sku."'");
 			  if($select_sku_sql->num_rows == 0){
@@ -267,7 +290,7 @@ function config_service_url($region,$serviceUrl,$marketplace_id){
     'ProxyPassword' => null,
     'MaxErrorRetry' => 3,
   );
-  $service = new MarketplaceWebServiceProducts_Client(
+    $service = new MarketplaceWebServiceProducts_Client(
     AWS_ACCESS_KEY_ID,
     AWS_SECRET_ACCESS_KEY,
     APPLICATION_NAME,
@@ -277,11 +300,13 @@ function config_service_url($region,$serviceUrl,$marketplace_id){
 	//$csvFile = file('./google-doc-test.csv');
 	$data = [];
 	$csv_data = [];
+	$csv_owner =[];
+	$csv_tier = [];
 	$i=0;
     foreach ($csvFile as $line) {
     $csv_check_data = str_getcsv($line);
         if(isset($_GET['tier'])){
-          if($_GET['tier'] == $csv_check_data[2] ){
+          if($_GET['tier'] == $csv_check_data[CSV_TIER] ){
             $data[] = $csv_check_data;
           }
          }else{
@@ -294,22 +319,27 @@ function config_service_url($region,$serviceUrl,$marketplace_id){
      }
   
      foreach($data as $csv_array_data){
-       $csv_product_asin = substr($csv_array_data[0], strrpos($csv_array_data[0], '/') + 1);
+       $csv_product_asin = substr($csv_array_data[CSV_URL], strrpos($csv_array_data[CSV_URL], '/') + 1);
        $csv_product_len = strlen($csv_product_asin);
-         if($csv_product_len == 10 && !preg_match('/[^A-Za-z0-9]/', $csv_product_asin)){
-         $csv_array_data[5] = $csv_product_asin;
-         $csv_data[] = $csv_product_asin;
+       if($csv_product_len == 10 && !preg_match('/[^A-Za-z0-9]/', $csv_product_asin)){
+	       //$csv_array_data[CSV_TOP3COMP] = $csv_product_asin;
+	 $csv_owner[$csv_product_asin] = $csv_array_data[CSV_ASSIGNEE];
+	 $csv_tier[$csv_product_asin] = $csv_array_data[CSV_TIER];
+	 $csv_data[] = $csv_product_asin;
          }
-       $csv_values = implode("','", $csv_array_data);
      }
+     $csv_owner = array_filter($csv_owner);
+     $csv_tier = array_filter($csv_tier);
+
      $csv_filter_array = array_filter($csv_data);
      $csv_filter_array = array_unique($csv_filter_array);
      $csv_chunk = array_chunk($csv_filter_array,10);
      $GLOBALS['csv_array'] = $data;
      $asin_array = [];
      foreach ($data as $entry) {
-       if (!empty($entry[4])){
-           $csv_data = explode(',', $entry[4]);
+	     //var_dump($entry);
+       if (!empty($entry[CSV_TOP3COMP])){
+           $csv_data = explode(',', $entry[CSV_TOP3COMP]);
            if (!empty($csv_data)){
              $asin_data = array_map('trim', $csv_data);
              foreach($asin_data as $asin_final_data){
@@ -342,14 +372,13 @@ function config_service_url($region,$serviceUrl,$marketplace_id){
     $asin_list= new MarketplaceWebServiceProducts_Model_ASINListType();
 	
 	$file_data=array();
+	//var_dump($csv_owner);
     foreach($res as $asin){
        	$asin_list->setASIN($asin);
 		$request_product->setASINList($asin_list);
-        $alias_data = invokeGetMatchingProduct($service, $request_product, $request_cometitor, $region);
-		$file_data=array_merge($alias_data, $file_data);
+        $alias_data = invokeGetMatchingProduct($service, $request_product, $request_cometitor, $region, $csv_owner, $csv_tier);
+	$file_data=array_merge($alias_data, $file_data);
     }
-	//var_dump($alias_data);
-	
 	$str_to_file='';
 	foreach($file_data as $data)
 	{
