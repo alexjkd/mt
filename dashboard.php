@@ -483,6 +483,31 @@ function DrawChartLinearBar($points, $aMapData, $aTooltipData, $h = '', $title_x
     doDrawChart($aMapData, $plotType, $graph_tip, $aTooltipData, $h, $title_x, $yLegents, $width, $height);
 }
 
+function InList($aLine, $aList)
+{
+    foreach($aList as $item)
+    {
+        //echo "<pre>$item, $val </pre>";
+        foreach($aLine as $line)
+        {
+            if (empty($line)) {
+                continue;
+            }
+            $aVs = explode(',', $line);
+            if (strpos($line, ',') == false) continue;
+            $asin = $aVs[0];
+            $sku = $aVs[1];
+            $sku_names = explode(".", $sku);
+
+            if(strcasecmp($item, $sku_names[2]) == 0)
+                       return true;
+        }
+    }
+    return false;
+}
+
+
+
 function GroupPriceAvgratingReivew($group, $aH, $alter = '')
 {
     global $interval, $rank1_date_sql, $models, $assignee, $region, $sellers, $dnsCountry, $timeoffset, $dateFormat, $table, $date_sql, $aColors, $image_width, $aTooltipData, $sAsinsWithRank1NotToBeDevidedBy1000;
@@ -508,13 +533,12 @@ function GroupPriceAvgratingReivew($group, $aH, $alter = '')
             $sku = $aVs[1];
             $sku_names = explode(".", $sku);
             //logic to get asin namei
-            var_dump($assignee);
+            //echo "<pre> $asin ". var_dump(InList($aLines, $assignee)) . "</pre>";
             if (!empty($assignee) && isset($assignee)) {
-                if (empty($sku_names[2]) or !(in_array("$sku_names[2]", $assignee) <> 0)) {
+                if (!(InList($aLines, $assignee))) {
                     goto GroupPriceAvgratingEnd;
                 }
             }
-
             if (!empty($sellers) && isset($sellers)) {
                 if (empty($sku_names[0]) or !(in_array("$sku_names[0]", $sellers)) <> 0) {
                     continue;
@@ -533,7 +557,6 @@ function GroupPriceAvgratingReivew($group, $aH, $alter = '')
                     continue;
                 }
             }
-
             if (stripos($legend, $asin) == false) {
                 $modelName = empty($sku_names[1]) ? '' : $sku_names[1];
                 $sellerName = $sku_names[0];
@@ -550,7 +573,7 @@ function GroupPriceAvgratingReivew($group, $aH, $alter = '')
             }
             $sAsins = implode("','", $aAsins);
             $sSkus = implode("','", $aSkus);
-            //var_dump($sSkus);
+           // var_dump($sSkus);
             //var_dump($sAsins);
             $op = '+';
             if ($h == 'rank1') $op = '-';
@@ -565,10 +588,9 @@ function GroupPriceAvgratingReivew($group, $aH, $alter = '')
                 $qAllSub .= ", SUM(IF(a.asin = '$asin', a.$sh, 0)) as '$sku $h' ";
             }
         }
-        if (empty($sAsins)) {
+       if (empty($sAsins)) {
             goto GroupPriceAvgratingEnd;
         }
-
         $decimal = 0;
         $sh = substr($h, 0, 1) . substr($h, -2);
         if ($h == 'reviews') {
