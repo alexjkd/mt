@@ -46,7 +46,7 @@
 									// echo '<li>'. str_replace("\n",'</li>',$sqlInsertGoogleSheet4LA1Tier); // 
 									sqlquery($sqlInsertGoogleSheet4LA1Tier);
 								}
-								foreach(explode(',','John,Sonny,Eric,Joy') as $owner) {
+								foreach(explode(',','John,Sonny,Rosa,Li,Wency') as $owner) {
 									echo '<li><a target="FrameContent" href="dashboard.php?assignee='. $owner .'">'. ucwords($owner) ."</li>";
 								}								
 								?>
