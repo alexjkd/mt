@@ -507,7 +507,8 @@ function GroupPriceAvgratingReivew($group, $aH, $alter = '')
             $asin = $aVs[0];
             $sku = $aVs[1];
             $sku_names = explode(".", $sku);
-            //logic to get asin name
+            //logic to get asin namei
+            var_dump($assignee);
             if (!empty($assignee) && isset($assignee)) {
                 if (empty($sku_names[2]) or !(in_array("$sku_names[2]", $assignee) <> 0)) {
                     goto GroupPriceAvgratingEnd;
