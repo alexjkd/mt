@@ -1,9 +1,11 @@
 <?php
+include_once(dirname(__FILE__) . "/lib/functions.php");
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
+define("SEVEN_DAYS",604800);
 // Load Composer's autoloader
 require 'vendor/autoload.php';
 
@@ -53,8 +55,6 @@ try {
     curl_close($ch);
     //var_dump($output);
     $data = json_decode($output, true);
-    //var_dump($data);
-    //exit();
     /*Initializing temp variable to design table dynamically*/
     $html_table = "<table>";
 
@@ -79,19 +79,27 @@ try {
     }
     // Content
     $content = file_get_contents(dirname(__FILE__) .'/email-template.html');
-    $content = str_replace('{mail-content}',$html_table, $content);
-    $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = $subject;
-    $mail->Body    = $content;
-    $mail->AltBody = 'Price Changing Alert';
-    if ($sendmail) {
+    $content = str_replace('{{mail-content}}',$html_table, $content);
+    $md5sum = md5($html_table);
+    $sql = sprintf("select md5 from `mail-content` where md5='" . $md5sum . "' and updated between %d and %d",time()-SEVEN_DAYS,time());
+    //var_dump($sql);
+    $records = sqlquery($sql);
+    //$sendmail = true;
+   // var_dump($records);
+    if(!empty($records) && count($records)){
+        echo 'This mail has been sent within 7 days';
+    } else if($sendmail == false) {
+        echo 'No Price changing up to 20% ';
+    }else {
+        $insert = sprintf("insert into `mail-content` (md5,updated) ". "values('$md5sum', %ld)",time());
+        sqlquery($insert);
+        $mail->isHTML(true);                                  // Set email format to HTML
+        $mail->Subject = $subject;
+        $mail->Body    = $content;
+        $mail->AltBody = 'Price Changing Alert';
         $mail->send();
-        echo 'Message has been sent';
     }
-    else 
-    {
-        echo 'No Price changing up to 20%';
-    }
+    
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
