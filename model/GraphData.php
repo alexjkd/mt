@@ -250,11 +250,11 @@ function retriveAlertInfo()
     $ret = array();
 
     $aAlias = retriveCmpetitorAlias();
-    if (isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME'] <> 'localhost') {
+    //if (isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME'] <> 'localhost') {
         $googleGroup = getGroupsFromGoogleDoc($aAlias, $google_doc);
-    } else {
-        $googleGroup = getGroupsFromGoogleDoc($aAlias, $local_csv);
-    }
+    //} else {
+    //    $googleGroup = getGroupsFromGoogleDoc($aAlias, $local_csv);
+    //}
 
     $aGroups = $googleGroup;
     foreach ($aGroups as $group) {
@@ -290,18 +290,26 @@ function analyzeAlertInfo($data)
         $sku_index = $sku_index . " price";
         $asin_str = str_replace("'", "", $aAsins[$i]);
         $last_index = count($prices) - 1;
+
         $base_price = $prices[0][$sku_index];
         $increase_price = $prices[$last_index][$sku_index];
         $perstange = (($increase_price - $base_price) / $base_price) * 100;
-        $dtime1 = $prices[0]['dtime'];
-        $dtime2 = $prices[$last_index]['dtime'];
+
+        $dtime1 = $prices[0]['dtime2'];
+        $dtime2 = $prices[$last_index]['dtime2'];
         //var_dump($perstange);
         if (is_float($perstange) && !is_infinite($perstange) && !is_nan($perstange) && $perstange <> 0 && abs($perstange) < 100) {
+            if ($perstange > 0) {
+                $percentage_str = sprintf("$%-01.2f - $%.2f (+)%.2f%%", $base_price, $increase_price, $perstange);
+            } else {
+                $percentage_str = sprintf("$%-01.2f - $%.2f (-)%.2f%%", $base_price, $increase_price, abs($perstange));
+            }
+
             $ret[] = array(
                 "ASIN" => $asin_str,
                 "SKU" => $sku_str,
-                "Dtime" => "From '$dtime1' to '$dtime2'",
-                "Percentage" => sprintf("%.2f", $perstange),
+                "Dtime" => "$dtime1 - $dtime2",
+                "Percentage" => $percentage_str,
             );
         }
     }
@@ -407,10 +415,9 @@ function retriveAlertFromDB($group, $aH, $alter = '')
         if ($h == 'rank1') $q1 = "SELECT dtime $q1Sub FROM (SELECT date_format(updated - INTERVAL HOUR(updated)%$interval HOUR,'$dateFormat') as dtime,asin $qBaseSub FROM mws_us WHERE asin IN ('$sAsins') AND $h > 0 AND $rank1_date_sql  GROUP BY asin, dtime HAVING $sh>0 ) a GROUP BY dtime ORDER BY dtime DESC"; //limit 2
         else $q1 = "SELECT dtime $q1Sub FROM (SELECT date_format(from_unixtime(time+$timeoffset),'$dateFormat') as dtime, asin $qBaseSub FROM $table WHERE asin IN ('$sAsins') AND $h > 0 AND $date_sql GROUP BY asin, dtime HAVING $sh>0 ) a GROUP BY dtime ORDER BY dtime DESC"; //limit 2
         //echo "<pre>$q1</pre>"; //testing
-        $aMapData = mwsQuery($q1);
         if ($h == 'rank1') {
+            $aMapData = mwsQuery($q1);
             $sql1 = "SELECT dtime,dtime2 $q1Sub FROM (SELECT date_format(updated - INTERVAL HOUR(updated)%$interval HOUR,'$dateFormat') as dtime, date_format(updated - INTERVAL HOUR(updated)%$interval HOUR,'%Y-%b-%d %l:00%p') as dtime2,asin $qBaseSub FROM mws_us WHERE asin IN ('$sAsins') AND $h > 0 AND $rank1_date_sql  GROUP BY asin, dtime,dtime2 HAVING $sh>0 ) a GROUP BY dtime,dtime2 ORDER BY dtime DESC"; //limit 2
-
             $sql2 = "SELECT date_format(from_unixtime(time+$timeoffset),'$dateFormat') as dtime, asin,price,reviews,avgrating FROM $table WHERE asin IN ('$sAsins') AND price > 0 AND $date_sql GROUP BY asin, dtime,price,reviews,avgrating HAVING price>0  order by dtime desc";
             //echo "<pre>$sql2</pre>"; //testing
             $priceData = array();
@@ -422,7 +429,9 @@ function retriveAlertFromDB($group, $aH, $alter = '')
             $graph_tip[3] = $sAsins;
         }
         if ($h == 'price') {
-            $alert_data[0] = $aMapData;
+            $sql1 = "SELECT dtime,dtime2 $q1Sub FROM (SELECT date_format(from_unixtime(time+$timeoffset),'$dateFormat') as dtime,date_format(from_unixtime(time+$timeoffset),'%b-%d %l:00%p') as dtime2, asin $qBaseSub FROM $table WHERE asin IN ('$sAsins') AND $h > 0 AND $date_sql GROUP BY asin, dtime,dtime2 HAVING $sh>0 ) a GROUP BY dtime,dtime2 ORDER BY dtime DESC"; //limit 2
+            $PriceData = sqlquery($sql1);
+            $alert_data[0] = $PriceData;
             $alert_data[1] = $sSkus;
             $alert_data[2] = $sAsins;
             return analyzeAlertInfo($alert_data);

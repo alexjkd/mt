@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>show google doc</title>
+    <title>Alerts For Price Changing</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
-  <body style="text-align:center;">
+  <body style="text-align:left;">
     <p id="json-data" style="font-size: 15px; font-weight: bold;"></p>
 
     <table id="table" align="center" border="1px"></table>
@@ -17,7 +17,6 @@
           type: "get",
           async: true,
           beforeSend: function(XMLHttpRequest) {
-            //alert('远程调用开始...');
             //$("#loading").html.("<img src='/jqueryStu/images/loading.gif' />");
             $("#loading").html("please wait, table is loading...");
           },

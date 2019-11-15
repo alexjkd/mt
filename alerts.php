@@ -10,6 +10,7 @@ require 'vendor/autoload.php';
 // Instantiation and passing `true` enables exceptions
 $mail = new PHPMailer(true);
 $to = 'offermon@ispringfilter.com';
+//$to = 'melon.bao@outlook.com';
 $subject = 'Price Changing Alert';
 $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "Content-type:text/html;charset=iso 8859-1" . "\r\n";
@@ -53,14 +54,15 @@ try {
     //var_dump($output);
     $data = json_decode($output, true);
     //var_dump($data);
+    //exit();
     /*Initializing temp variable to design table dynamically*/
-    $temp = "<table>";
+    $html_table = "<table>";
 
     /*Defining table Column headers depending upon JSON records*/
-    $temp .= "<tr><th>ASIN</th>";
-    $temp .= "<th>SKU</th>";
-    $temp .= "<th>Dtime</th>";
-    $temp .= "<th>Percentage</th></tr>";
+    $html_table .= "<tr><th>ASIN</th>";
+    $html_table .= "<th>SKU</th>";
+    $html_table .= "<th>Dtime</th>";
+    $html_table .= "<th>Percentage</th></tr>";
 
     /*Dynamically generating rows & columns*/
     $sendmail = false;
@@ -68,21 +70,27 @@ try {
         if (abs($data[$i]["Percentage"] >= 20)) {
             $sendmail = true;
         }
-        $temp .= "<tr>";
-        $temp .= "<td align=\"center\">" . $data[$i]["ASIN"] . "</td>";
-        $temp .= "<td align=\"center\">" . $data[$i]["SKU"] . "</td>";
-        $temp .= "<td align=\"center\">" . $data[$i]["Dtime"] . "</td>";
-        $temp .= "<td align=\"center\">" . $data[$i]["Percentage"] . "</td>";
-        $temp .= "</tr>";
+        $html_table .= "<tr>";
+        $html_table .= "<td align=\"center\">" . $data[$i]["ASIN"] . "</td>";
+        $html_table .= "<td align=\"center\">" . $data[$i]["SKU"] . "</td>";
+        $html_table .= "<td align=\"center\">" . $data[$i]["Dtime"] . "</td>";
+        $html_table .= "<td align=\"center\">" . $data[$i]["Percentage"] . "</td>";
+        $html_table .= "</tr>";
     }
     // Content
+    $content = file_get_contents(dirname(__FILE__) .'/email-template.html');
+    $content = str_replace('{mail-content}',$html_table, $content);
     $mail->isHTML(true);                                  // Set email format to HTML
     $mail->Subject = $subject;
-    $mail->Body    = $temp;
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+    $mail->Body    = $content;
+    $mail->AltBody = 'Price Changing Alert';
     if ($sendmail) {
         $mail->send();
         echo 'Message has been sent';
+    }
+    else 
+    {
+        echo 'No Price changing up to 20%';
     }
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
