@@ -1,2 +1,0 @@
-[07-Sep-2019 19:20:35 America/New_York] PHP Deprecated:  Methods with the same name as their class will not be constructors in a future version of PHP; PHPlot has a deprecated constructor in /var/www/html/codiad/workspace/mws/mt/lib/phplot.6.1.0.php on line 36
-[07-Sep-2019 22:10:18 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /var/www/html/codiad/workspace/mws/mt/dashboard_mws.php on line 429

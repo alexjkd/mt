@@ -9,7 +9,7 @@ require 'vendor/autoload.php';
 
 // Instantiation and passing `true` enables exceptions
 $mail = new PHPMailer(true);
-$to = 'melon.bao@outlook.com';
+$to = 'offermon@ispringfilter.com';
 $subject = 'Price Changing Alert';
 $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "Content-type:text/html;charset=iso 8859-1" . "\r\n";
@@ -34,15 +34,15 @@ try {
     //Server settings
     $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
     $mail->isSMTP();                                            // Send using SMTP
-    $mail->Host       = 'smtp.live.com';                    // Set the SMTP server to send through
+    $mail->Host       = 'smtpout.secureserver.net';                    // Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-    $mail->Username   = 'cit1.ispring@hotmail.com';                     // SMTP username
-    $mail->Password   = 'PwdCit1.20191011';                               // SMTP password
+    $mail->Username   = 'cs6@ispringfilter.com';                     // SMTP username
+    $mail->Password   = 'cs6cs620190905';                               // SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
     $mail->Port       = 587;                                    // TCP port to connect to
 
     //Recipients
-    $mail->setFrom('cit1.ispring@hotmail.com', '123filter');
+    $mail->setFrom('offermon@ispringfilter.com', '123filter');
     $mail->addAddress($to, 'Joe User');     // Add a recipient
 
     $ch = curl_init();

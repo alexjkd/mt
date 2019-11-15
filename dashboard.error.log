@@ -1,5 +1,0 @@
-[23-Oct-2019 20:53:15 America/New_York] PHP Fatal error:  DrawGraph(): No data array in /var/www/html/codiad/workspace/mt/lib/phplot.6.1.0.php on line 1957
-[26-Oct-2019 09:05:09 America/New_York] PHP Deprecated:  Methods with the same name as their class will not be constructors in a future version of PHP; PHPlot has a deprecated constructor in /var/www/html/codiad/workspace/mt/lib/phplot.6.1.0.php on line 36
-[27-Oct-2019 09:06:52 America/New_York] PHP Deprecated:  Methods with the same name as their class will not be constructors in a future version of PHP; PHPlot has a deprecated constructor in /var/www/html/codiad/workspace/mt/lib/phplot.6.1.0.php on line 36
-[12-Nov-2019 07:53:30 America/New_York] PHP Deprecated:  Methods with the same name as their class will not be constructors in a future version of PHP; PHPlot has a deprecated constructor in /var/www/html/codiad/workspace/mt/lib/phplot.6.1.0.php on line 36
-[12-Nov-2019 21:38:19 America/New_York] PHP Deprecated:  Methods with the same name as their class will not be constructors in a future version of PHP; PHPlot has a deprecated constructor in /var/www/html/mt/lib/phplot.6.1.0.php on line 36
