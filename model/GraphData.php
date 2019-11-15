@@ -431,7 +431,7 @@ function melonQuery($sql)
         'mysql',
         'mws',
         'mws9lBl88G2uvVtcHw$',
-        'mws'
+        'mt'
     );
 
     if (!$link) {

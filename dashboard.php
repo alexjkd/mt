@@ -239,7 +239,7 @@ function melonQuery($sql)
 		'localhost',
 		'mws',
 		'mws9lBl88G2uvVtcHw$',
-		'mws'
+		'mt'
 	);
 
 	if (!$link) {
