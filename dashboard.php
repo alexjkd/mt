@@ -123,10 +123,10 @@ if (!empty($_GET)) {
     if (!empty($_GET['groups'])) {
         $groups = $_GET['groups'];
         $aAlias = retriveCmpetitorAlias();
-        if ($groups == 'csv') {
-            $googleGroup = getGroupsFromGoogleDoc($aAlias, $local_csv);
-        } else {
+        if (isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME'] <> 'localhost') {
             $googleGroup = getGroupsFromGoogleDoc($aAlias, $google_doc);
+        } else {
+            $googleGroup = getGroupsFromGoogleDoc($aAlias, $local_csv);
         }
         header('Content-Type: application/json');
         echo json_encode($googleGroup);
@@ -135,8 +135,11 @@ if (!empty($_GET)) {
     if (!empty($_GET['simple-table'])) {
         $datas = array();
         $items = array();
-        $csvFile = file($google_doc);
-        //$csvFile = file($local_csv);
+        if (isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME'] <> 'localhost') {
+            $googleGroup = getGroupsFromGoogleDoc($aAlias, $google_doc);
+        } else {
+            $googleGroup = getGroupsFromGoogleDoc($aAlias, $local_csv);
+        }
         foreach ($csvFile as $line) {
             $csv_check_data = str_getcsv($line);
             $datas[] = $csv_check_data;
@@ -195,7 +198,11 @@ if (!empty($_GET)) {
 
 if (empty($aGroups) && empty($group)) {
     $aAlias = retriveCmpetitorAlias();
-    $googleGroup = getGroupsFromGoogleDoc($aAlias, $google_doc);
+    if (isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME'] <> 'localhost') {
+        $googleGroup = getGroupsFromGoogleDoc($aAlias, $google_doc);
+    } else {
+        $googleGroup = getGroupsFromGoogleDoc($aAlias, $local_csv);
+    }
     $aGroups = $googleGroup;
     echo "<head>";
     echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"css/tip.css\">";
@@ -232,30 +239,6 @@ foreach ($aGroups as $group) {
 
 //printf("<pre>%s</pre>\n",var_dump($aAlias));
 /////////////////////////////////////////////////////
-function mwsQuery($sql)
-{
-	$ret = array();
-	$link = mysqli_connect(
-		'localhost',
-		'mws',
-		'mws9lBl88G2uvVtcHw$',
-		'mws'
-	);
-
-	if (!$link) {
-		printf("Can't connect to MySQL Server. Errorcode: %s ", mysqli_connect_error());
-		exit;
-	} else
-
-	if ($result = mysqli_query($link, $sql)) {
-		while ($row = mysqli_fetch_assoc($result)) {
-			$ret[] = $row;
-		}
-		mysqli_free_result($result);
-	}
-	mysqli_close($link);
-	return $ret;
-}
 ////////////////////////////////////////////////////
 function retriveCmpetitorAlias()
 {
@@ -485,11 +468,9 @@ function DrawChartLinearBar($points, $aMapData, $aTooltipData, $h = '', $title_x
 
 function InList($aLine, $aList)
 {
-    foreach($aList as $item)
-    {
+    foreach ($aList as $item) {
         //echo "<pre>$item, $val </pre>";
-        foreach($aLine as $line)
-        {
+        foreach ($aLine as $line) {
             if (empty($line)) {
                 continue;
             }
@@ -499,8 +480,8 @@ function InList($aLine, $aList)
             $sku = $aVs[1];
             $sku_names = explode(".", $sku);
 
-            if(strcasecmp($item, $sku_names[2]) == 0)
-                       return true;
+            if (strcasecmp($item, $sku_names[2]) == 0)
+                return true;
         }
     }
     return false;
@@ -573,7 +554,7 @@ function GroupPriceAvgratingReivew($group, $aH, $alter = '')
             }
             $sAsins = implode("','", $aAsins);
             $sSkus = implode("','", $aSkus);
-           // var_dump($sSkus);
+            // var_dump($sSkus);
             //var_dump($sAsins);
             $op = '+';
             if ($h == 'rank1') $op = '-';
@@ -588,7 +569,7 @@ function GroupPriceAvgratingReivew($group, $aH, $alter = '')
                 $qAllSub .= ", SUM(IF(a.asin = '$asin', a.$sh, 0)) as '$sku $h' ";
             }
         }
-       if (empty($sAsins)) {
+        if (empty($sAsins)) {
             goto GroupPriceAvgratingEnd;
         }
         $decimal = 0;
@@ -606,7 +587,7 @@ function GroupPriceAvgratingReivew($group, $aH, $alter = '')
         if ($h == 'rank1') $q1 = "SELECT dtime $q1Sub FROM (SELECT date_format(updated - INTERVAL HOUR(updated)%$interval HOUR,'$dateFormat') as dtime,asin $qBaseSub FROM mws_us WHERE asin IN ('$sAsins') AND $h > 0 AND $rank1_date_sql  GROUP BY asin, dtime HAVING $sh>0 ) a GROUP BY dtime ORDER BY dtime DESC"; //limit 2
         else $q1 = "SELECT dtime $q1Sub FROM (SELECT date_format(from_unixtime(time+$timeoffset),'$dateFormat') as dtime, asin $qBaseSub FROM $table WHERE asin IN ('$sAsins') AND $h > 0 AND $date_sql GROUP BY asin, dtime HAVING $sh>0 ) a GROUP BY dtime ORDER BY dtime DESC"; //limit 2
         //echo "<pre>$q1</pre>"; //testing
-        $aMapData = mwsQuery($q1);
+        $aMapData = sqlquery($q1);
         if ($h == 'rank1') {
             $sql1 = "SELECT dtime,dtime2 $q1Sub FROM (SELECT date_format(updated - INTERVAL HOUR(updated)%$interval HOUR,'$dateFormat') as dtime, date_format(updated - INTERVAL HOUR(updated)%$interval HOUR,'%Y-%b-%d %l:00%p') as dtime2,asin $qBaseSub FROM mws_us WHERE asin IN ('$sAsins') AND $h > 0 AND $rank1_date_sql  GROUP BY asin, dtime,dtime2 HAVING $sh>0 ) a GROUP BY dtime,dtime2 ORDER BY dtime DESC"; //limit 2
 

@@ -133,10 +133,10 @@ if (!empty($_GET)) {
     if (!empty($_GET['groups'])) {
         $groups = $_GET['groups'];
         $aAlias = retriveCmpetitorAlias();
-        if ($groups == 'csv') {
-            $googleGroup = getGroupsFromGoogleDoc($aAlias, $local_csv);
-        } else {
+        if (isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME'] <> 'localhost') {
             $googleGroup = getGroupsFromGoogleDoc($aAlias, $google_doc);
+        } else {
+            $googleGroup = getGroupsFromGoogleDoc($aAlias, $local_csv);
         }
         header('Content-Type: application/json');
         echo json_encode($googleGroup);
@@ -145,8 +145,11 @@ if (!empty($_GET)) {
     if (!empty($_GET['simple-table'])) {
         $datas = array();
         $items = array();
-        $csvFile = file($google_doc);
-        //$csvFile = file($local_csv);
+        if (isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME'] <> 'localhost') {
+            $googleGroup = getGroupsFromGoogleDoc($aAlias, $google_doc);
+        } else {
+            $googleGroup = getGroupsFromGoogleDoc($aAlias, $local_csv);
+        }
         foreach ($csvFile as $line) {
             $csv_check_data = str_getcsv($line);
             $datas[] = $csv_check_data;
@@ -206,7 +209,7 @@ if (!empty($_GET)) {
 
 if (empty($aGroups) && empty($group)) {
     $aAlias = retriveCmpetitorAlias();
-    $googleGroup = getGroupsFromGoogleDoc($aAlias, $google_doc);
+    $googleGroup = getGroupsFromGoogleDoc($aAlias, $local_csv);
     $aGroups = $googleGroup;
     echo "<head>";
     echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"../css/tip.css\">";
@@ -247,7 +250,12 @@ function retriveAlertInfo()
     $ret = array();
 
     $aAlias = retriveCmpetitorAlias();
-    $googleGroup = getGroupsFromGoogleDoc($aAlias, $google_doc);
+    if (isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME'] <> 'localhost') {
+        $googleGroup = getGroupsFromGoogleDoc($aAlias, $google_doc);
+    } else {
+        $googleGroup = getGroupsFromGoogleDoc($aAlias, $local_csv);
+    }
+
     $aGroups = $googleGroup;
     foreach ($aGroups as $group) {
         if (substr($group, 0, 1) <> '-' and strlen($group) > 15) {
@@ -453,7 +461,7 @@ function retriveCmpetitorAlias()
 {
     $region = isset($_GET['region']) ? $_GET['region'] : 'us';
     //$file = file_get_contents('http://czyusa.com/amazon.'. $region .'_asin_sku_competitors.txt');
-    $file = file_get_contents('/var/www/html/codiad/workspace/mt/MWSProducts/asin_alias.txt');
+    $file = file_get_contents('/var/www/html/mt/MWSProducts/asin_alias.txt');
     $aAliaGroups = explode("\n\n", $file);
 
     foreach ($aAliaGroups as $aAlianGroup) {
