@@ -399,15 +399,15 @@ function retriveAlertFromDB($group, $aH, $alter = '')
         if ($h == 'rank1') $q1 = "SELECT dtime $q1Sub FROM (SELECT date_format(updated - INTERVAL HOUR(updated)%$interval HOUR,'$dateFormat') as dtime,asin $qBaseSub FROM mws_us WHERE asin IN ('$sAsins') AND $h > 0 AND $rank1_date_sql  GROUP BY asin, dtime HAVING $sh>0 ) a GROUP BY dtime ORDER BY dtime DESC"; //limit 2
         else $q1 = "SELECT dtime $q1Sub FROM (SELECT date_format(from_unixtime(time+$timeoffset),'$dateFormat') as dtime, asin $qBaseSub FROM $table WHERE asin IN ('$sAsins') AND $h > 0 AND $date_sql GROUP BY asin, dtime HAVING $sh>0 ) a GROUP BY dtime ORDER BY dtime DESC"; //limit 2
         //echo "<pre>$q1</pre>"; //testing
-        $aMapData = melonQuery($q1);
+        $aMapData = mwsQuery($q1);
         if ($h == 'rank1') {
             $sql1 = "SELECT dtime,dtime2 $q1Sub FROM (SELECT date_format(updated - INTERVAL HOUR(updated)%$interval HOUR,'$dateFormat') as dtime, date_format(updated - INTERVAL HOUR(updated)%$interval HOUR,'%Y-%b-%d %l:00%p') as dtime2,asin $qBaseSub FROM mws_us WHERE asin IN ('$sAsins') AND $h > 0 AND $rank1_date_sql  GROUP BY asin, dtime,dtime2 HAVING $sh>0 ) a GROUP BY dtime,dtime2 ORDER BY dtime DESC"; //limit 2
 
             $sql2 = "SELECT date_format(from_unixtime(time+$timeoffset),'$dateFormat') as dtime, asin,price,reviews,avgrating FROM $table WHERE asin IN ('$sAsins') AND price > 0 AND $date_sql GROUP BY asin, dtime,price,reviews,avgrating HAVING price>0  order by dtime desc";
             //echo "<pre>$sql2</pre>"; //testing
             $priceData = array();
-            $priceData = melonQuery($sql2);
-            $aRank1Data = melonQuery($sql1);
+            $priceData = sqlquery($sql2);
+            $aRank1Data = sqlquery($sql1);
             $graph_tip[0] = $aRank1Data;
             $graph_tip[1] = $priceData;
             $graph_tip[2] = $sSkus;
@@ -424,14 +424,14 @@ function retriveAlertFromDB($group, $aH, $alter = '')
     }
 }
 
-function melonQuery($sql)
+function mwsQuery($sql)
 {
     $ret = array();
     $link = mysqli_connect(
         'mysql',
         'mws',
         'mws9lBl88G2uvVtcHw$',
-        'mt'
+        'mws'
     );
 
     if (!$link) {
@@ -776,15 +776,15 @@ function GroupPriceAvgratingReivew($group, $aH, $alter = '')
         if ($h == 'rank1') $q1 = "SELECT dtime $q1Sub FROM (SELECT date_format(updated - INTERVAL HOUR(updated)%$interval HOUR,'$dateFormat') as dtime,asin $qBaseSub FROM mws_us WHERE asin IN ('$sAsins') AND $h > 0 AND $rank1_date_sql  GROUP BY asin, dtime HAVING $sh>0 ) a GROUP BY dtime ORDER BY dtime DESC"; //limit 2
         else $q1 = "SELECT dtime $q1Sub FROM (SELECT date_format(from_unixtime(time+$timeoffset),'$dateFormat') as dtime, asin $qBaseSub FROM $table WHERE asin IN ('$sAsins') AND $h > 0 AND $date_sql GROUP BY asin, dtime HAVING $sh>0 ) a GROUP BY dtime ORDER BY dtime DESC"; //limit 2
         echo "<pre>$q1</pre>"; //testing
-        $aMapData = melonQuery($q1);
+        $aMapData = mwsQuery($q1);
         if ($h == 'rank1') {
             $sql1 = "SELECT dtime,dtime2 $q1Sub FROM (SELECT date_format(updated - INTERVAL HOUR(updated)%$interval HOUR,'$dateFormat') as dtime, date_format(updated - INTERVAL HOUR(updated)%$interval HOUR,'%Y-%b-%d %l:00%p') as dtime2,asin $qBaseSub FROM mws_us WHERE asin IN ('$sAsins') AND $h > 0 AND $rank1_date_sql  GROUP BY asin, dtime,dtime2 HAVING $sh>0 ) a GROUP BY dtime,dtime2 ORDER BY dtime DESC"; //limit 2
 
             $sql2 = "SELECT date_format(from_unixtime(time+$timeoffset),'$dateFormat') as dtime, asin,price,reviews,avgrating FROM $table WHERE asin IN ('$sAsins') AND price > 0 AND $date_sql GROUP BY asin, dtime,price,reviews,avgrating HAVING price>0  order by dtime desc";
             //echo "<pre>$sql2</pre>"; //testing
             $priceData = array();
-            $priceData = melonQuery($sql2);
-            $aRank1Data = melonQuery($sql1);
+            $priceData = sqlquery($sql2);
+            $aRank1Data = sqlquery($sql1);
             $graph_tip[0] = $aRank1Data;
             $graph_tip[1] = $priceData;
             $graph_tip[2] = $sSkus;
