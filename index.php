@@ -36,7 +36,7 @@ foreach (glob('uploads/*.HomeDepotOrders.csv') as $f) {
 <FRAMESET COLS="225,*" onresize="if (navigator.family == &#39;nn4&#39;) window.location.reload()">
   <FRAME SRC="FrameTree.php" NAME="left">
   <FRAMESET ROWS="100%">
-    <FRAME SRC="dashboard.php?list=top30&region=us" NAME="FrameContent" frameborder="0" scrolling="yes" id="FrameContent">
+    <FRAME SRC="dashboard.php?tier=1&list=top30&region=us" NAME="FrameContent" frameborder="0" scrolling="yes" id="FrameContent">
     <!-- <FRAME SRC="notification.php" NAME="bottomright" frameborder="0"> -->
   </FRAMESET>
 </FRAMESET>
