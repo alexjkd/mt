@@ -1,0 +1,13 @@
+[16-Nov-2019 10:43:12 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /var/www/html/mt/dashboard.20191111.php:330) in /var/www/html/mt/lib/phplot.6.1.0.php on line 1839
+[16-Nov-2019 10:43:12 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /var/www/html/mt/dashboard.20191111.php:330) in /var/www/html/mt/lib/phplot.6.1.0.php on line 1840
+[16-Nov-2019 10:43:12 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /var/www/html/mt/dashboard.20191111.php:330) in /var/www/html/mt/lib/phplot.6.1.0.php on line 1841
+[16-Nov-2019 10:43:12 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /var/www/html/mt/dashboard.20191111.php:330) in /var/www/html/mt/lib/phplot.6.1.0.php on line 1842
+[16-Nov-2019 10:43:12 America/New_York] PHP Warning:  Cannot modify header information - headers already sent by (output started at /var/www/html/mt/dashboard.20191111.php:330) in /var/www/html/mt/lib/phplot.6.1.0.php on line 1858
+[16-Nov-2019 10:43:12 America/New_York] PHP Fatal error:  SetFontTTF: Can't find TrueType font /home/czyusa1973/public_html/mt/lib/Yagora.ttf in /var/www/html/mt/lib/phplot.6.1.0.php on line 1957
+[16-Nov-2019 11:49:49 America/New_York] PHP Notice:  Undefined variable: interval in /var/www/html/mt/dashboard.20191111.php on line 315
+[16-Nov-2019 11:52:54 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /var/www/html/mt/dashboard.20191111.php on line 322
+[16-Nov-2019 11:52:54 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /var/www/html/mt/dashboard.20191111.php on line 322
+[18-Nov-2019 10:14:22 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /var/www/html/mt/dashboard.20191111.php on line 322
+[18-Nov-2019 10:14:22 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /var/www/html/mt/dashboard.20191111.php on line 322
+[18-Nov-2019 10:21:27 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /var/www/html/mt/dashboard.20191111.php on line 322
+[18-Nov-2019 10:21:27 America/New_York] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /var/www/html/mt/dashboard.20191111.php on line 322

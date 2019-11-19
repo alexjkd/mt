@@ -11,48 +11,61 @@
 <body>
 <H3>Market Tracker</h3>
 
+<?php
+	include_once('lib/functions.php');
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
+
+	$sPublishedGoogleSheetTsv = file('https://docs.google.com/spreadsheets/d/e/2PACX-1vR2gY22xgcaR4JUr3naK5nXbFzw3pL_Ogn4msFRDGfVA8nILfEs-BOdxDRt2Jvhx9Yz31eAF8IfpjBn/pub?gid=352479658&single=true&output=tsv'); //mwsTsv: IMPORTRANGE 4-LA "1-Tier!B1:F300"
+	foreach($sPublishedGoogleSheetTsv as $sTsvRow)	{
+		// echo '<li>'. $sTsvRow .'</li>';
+		$aTsvRow = explode("\t", $sTsvRow);
+		if (preg_match('/(B0\w{8})/',$aTsvRow[0],$m) == FALSE) continue;
+		// echo '<li>'. $sTsvRow .'</li>';
+		$asin = trim($m[1]);
+		$sku = trim($aTsvRow[1]);
+		$tier = trim($aTsvRow[2]);
+		$owner = trim($aTsvRow[3]);
+		$comp = trim($aTsvRow[4]);
+		// echo "<pre>"; print_r($asin .' top 3 comps: '. $comp ); echo "</pre>";
+		$sqlInsertGoogleSheet4LA1Tier = "INSERT IGNORE INTO GoogleSheet4LA1Tier (asin, sku, tier,owner,comp) VALUES ('$asin', '$sku','$tier','$owner','$comp');\n";
+		// echo '<li>'. str_replace("\n",'</li>',$sqlInsertGoogleSheet4LA1Tier); //
+		sqlquery($sqlInsertGoogleSheet4LA1Tier);
+	}
+?>
+
+
 <div id="tree_menu">
     <ul>
-	<li class="isFolder isExpanded" title="alerts">Alerts
-    <ul>
-    <li><a target="FrameContent" href="alerts.html">Alerts</a></li>
-    </ul>
-	</li>
         <li class="isFolder isExpanded" title="Bookmarks">Amazon.COM KPI
 					<ul>
-						 <li><a target="FrameContent" href="dashboard.php?list=top30">US BSR</a></li> <!-- 2016-08-17 http://czyusa.com/editor_scTu4UTrYBGA4arkTBPvfA7Uu5cn14jfhMcMvQ91i8.php?file=amazon_asin_sku_competitors.txt, homeserver F:\backup\d\it\czyusa\mt\uploads\runBSR.cmd hourly task creates and uploads BSR.csv to mt/uploads/ then processed by import.php -->
-						 <li>&nbsp;<a target="FrameContent" href="http://czyusa.com/editor_scTu4UTrYBGA4arkTBPvfA7Uu5cn14jfhMcMvQ91i8.php?file=amazon.us_asin_sku_competitors.txt">US BSR Groups</a></li>
+                            <li>&nbsp;<a target="FrameContent" href="alerts.html">Alerts</a></li>
+                            <li>&nbsp;<a target="FrameContent" href="./scraper/review.php">Reviews</a></li>
+							<li class="isFolder isExpanded" title="SKUs by Owner">SKUs by Tier
+								<ul>
+								<?php
+								for($Tier=1;$Tier<=4;$Tier++) {
+									echo '<li><a target="FrameContent" title="Daily average of last 30 days" href="dashboard.php?period=30days&tier='. $Tier .'">Tier '. $Tier ."</li>";
+								}
+								?>
+								</ul>
+							</li>
 						 <li class="isFolder isExpanded" title="SKUs by Owner">SKUs by Owner
 							<ul>
 								<?php
-								include_once('lib/functions.php');
-								ini_set('display_errors', 1);
-								ini_set('display_startup_errors', 1);
-								error_reporting(E_ALL);
-
-								$sPublishedGoogleSheetTsv = file('https://docs.google.com/spreadsheets/d/e/2PACX-1vR2gY22xgcaR4JUr3naK5nXbFzw3pL_Ogn4msFRDGfVA8nILfEs-BOdxDRt2Jvhx9Yz31eAF8IfpjBn/pub?gid=352479658&single=true&output=tsv'); //mwsTsv: IMPORTRANGE 4-LA "1-Tier!B1:F300"
-								foreach($sPublishedGoogleSheetTsv as $sTsvRow)	{
-									// echo '<li>'. $sTsvRow .'</li>';
-									$aTsvRow = explode("\t", $sTsvRow);
-									if (preg_match('/(B0\w{8})/',$aTsvRow[0],$m) == FALSE) continue;
-									// echo '<li>'. $sTsvRow .'</li>';
-									$asin = trim($m[1]);
-									$sku = trim($aTsvRow[1]);
-									$tier = trim($aTsvRow[2]);
-									$owner = trim($aTsvRow[3]);
-									$comp = trim($aTsvRow[4]);
-									// echo "<pre>"; print_r($asin .' top 3 comps: '. $comp ); echo "</pre>";
-									$sqlInsertGoogleSheet4LA1Tier = "INSERT IGNORE INTO GoogleSheet4LA1Tier (asin, sku, tier,owner,comp) VALUES ('$asin', '$sku','$tier','$owner','$comp');\n";
-									// echo '<li>'. str_replace("\n",'</li>',$sqlInsertGoogleSheet4LA1Tier); // 
-									sqlquery($sqlInsertGoogleSheet4LA1Tier);
-								}
-								foreach(explode(',','John,Sonny,Rosa,Li,Wency') as $owner) {
-									echo '<li><a target="FrameContent" href="dashboard.php?assignee='. $owner .'">'. ucwords($owner) ."</li>";
-								}								
+								//~ foreach(explode(',','john,Sonny,Eric,Joy') as $owner) {
+									//~ echo '<li><a target="FrameContent" href="dashboard.php?owner='. $owner .'">'. ucwords($owner) ."</li>";
+								//~ }
+									$aAssignees = explode(',','John,Sonny,Rosa,Wency,Li,Jerry,Peter');
+									array_multisort($aAssignees);
+									foreach($aAssignees as $assignee) {
+										echo '<li><a target="FrameContent" title="Daily average of last 30 days" href="dashboard.php?period=30days&assignee='. $assignee .'">'. ucwords($assignee) ."</li>";
+									}
 								?>
 							</ul>
+							</li>
 						</li>
-
 						 <li><a target="FrameContent" href="dashboard_new.php">US BSR(weekly)</a></li> <!-- 2016-08-17 http://czyusa.com/editor_scTu4UTrYBGA4arkTBPvfA7Uu5cn14jfhMcMvQ91i8.php?file=amazon_asin_sku_competitors.txt, homeserver F:\backup\d\it\czyusa\mt\uploads\runBSR.cmd hourly task creates and uploads BSR.csv to mt/uploads/ then processed by import.php -->
 						 <li>&nbsp;<a target="FrameContent" href="http://czyusa.com/editor_asin_sku.php">ASIN_SKU</a></li>
 						 <li>&nbsp;<a target="FrameContent" href="http://czyusa.com/mt/item/asin_sku_title.php?table=1">ASIN_SKU_TITLE</a></li>
