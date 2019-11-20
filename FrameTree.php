@@ -40,7 +40,7 @@
     <ul>
         <li class="isFolder isExpanded" title="Bookmarks">Amazon.COM KPI
 					<ul>
-                            <li>&nbsp;<a target="FrameContent" href="alerts.html">Alerts</a></li>
+                            <li>&nbsp;<a target="FrameContent" href="alerts-tablefilter.php">Alerts</a></li>
                             <li>&nbsp;<a target="FrameContent" href="./scraper/review.php">Reviews</a></li>
 							<li class="isFolder isExpanded" title="SKUs by Owner">SKUs by Tier
 								<ul>

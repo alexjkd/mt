@@ -56,7 +56,7 @@ if (!empty($_GET) and !empty($_GET['items'])) {
     //echo "<pre> aGroups = ";var_dump($aGroups);echo "</pre>";exit;
     echo '<button type="button" onclick="javascript:history.back()">Back</button>   ';
 } else {
-    $days = strtotime('now - 27 hours');
+    $days = $period ? strtotime('now - ' . $period . ' - 3 hours'): strtotime('now - 27 hours');
     if ($region <> 'us') $days = strtotime('now - 120 hours');
     // $days = strtotime('now - 24 days');
     if (isset($_GET['owner'])) {

@@ -300,9 +300,9 @@ function analyzeAlertInfo($data)
         //var_dump($perstange);
         if (is_float($perstange) && !is_infinite($perstange) && !is_nan($perstange) && $perstange <> 0 && abs($perstange) < 100) {
             if ($perstange > 0) {
-                $percentage_str = sprintf("$%-01.2f - $%.2f (+)%.2f%%", $base_price, $increase_price, $perstange);
+                $percentage_str = sprintf("$%-01.2f - $%.2f (<span style=\"color:blue;\"><strong>↑</strong></span>)%.2f%%", $base_price, $increase_price, $perstange);
             } else {
-                $percentage_str = sprintf("$%-01.2f - $%.2f (-)%.2f%%", $base_price, $increase_price, abs($perstange));
+                $percentage_str = sprintf("$%-01.2f - $%.2f (<span style=\"color:red;\"><strong>↓</strong></span>)%.2f%%", $base_price, $increase_price, abs($perstange));
             }
 
             $ret[] = array(
