@@ -80,6 +80,20 @@ $local_csv = dirname(__FILE__) . '/../MT_lists - mws.csv';
 $group = '';
 $iMap = '';
 
+function googleGroupToAsinAlais( $googleGroup)
+{
+    $ret = [];
+    foreach($googleGroup as $group){
+        $group = str_replace(array("\""), "", $group);
+        $asin_alias = explode("\n", $group);
+        $asin_alias = array_filter($asin_alias);
+        //var_dump($asin_alias);
+        $ret = array_merge($ret, $asin_alias);
+    }
+    return $ret;
+}
+
+
 if (!empty($_GET)) {
     if (!empty($_GET['assignee'])) {
         $getData = $_GET['assignee'];
@@ -205,6 +219,29 @@ if (!empty($_GET)) {
         echo json_encode($items);
         exit();
     }
+    if (!empty($_GET['mws-check'])){
+        $aAlias = retriveCmpetitorAlias();
+        $googleGroup = getGroupsFromGoogleDoc($aAlias, $google_doc);
+        $asin_alias = googleGroupToAsinAlais($googleGroup);
+        $mws_records = array();
+        $i =0;
+        foreach($asin_alias as $asin_alia) {
+            $items =  explode(",",$asin_alia);
+            $num = check_mws($items[0], $items[1]);
+            if($num < 0 or $num >= 24) {
+                continue;
+            }
+            $tmp['asin'] = $items[0];
+            $tmp['sku_names'] = $items[1];
+            $tmp['24hours-records'] =$num; 
+            //var_dump($mws_records);
+            $mws_records[] = $tmp;
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode($mws_records);
+        exit();
+    }
 }
 
 if (empty($aGroups) && empty($group)) {
@@ -244,6 +281,8 @@ foreach ($aGroups as $group) {
     }
 }
 
+
+
 function retriveAlertInfo()
 {
     global $local_csv, $google_doc;
@@ -251,7 +290,7 @@ function retriveAlertInfo()
 
     $aAlias = retriveCmpetitorAlias();
     //if (isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME'] <> 'localhost') {
-        $googleGroup = getGroupsFromGoogleDoc($aAlias, $google_doc);
+    $googleGroup = getGroupsFromGoogleDoc($aAlias, $google_doc);
     //} else {
     //    $googleGroup = getGroupsFromGoogleDoc($aAlias, $local_csv);
     //}
@@ -270,6 +309,31 @@ function retriveAlertInfo()
     }
     return $ret;
 }
+
+function check_mws($asin, $sku_names)
+{
+    if(strstr($sku_names, 'ispr') == null) {
+        return -1;
+    }
+
+    $date = new DateTime();
+    //$date->setTimezone(new DateTimeZone('EST'));
+    //$str_time_start = $date->format('Y-m-d H:i:s');
+    $time_start = strtotime('now  - 3 hours');
+    $time_24hours_before = strtotime('now  - 27 hours');
+    $date->setTimestamp($time_start);
+    $str_time_start = $date->format('Y-m-d H:i:s');
+    $date->setTimestamp($time_24hours_before);
+    $str_time_24hours_before = $date->format('Y-m-d H:i:s');
+    //$str_time_24hours_before = date_format($time_24hours_before, 'Y-m-d H:i:s');
+
+    $sql = sprintf("select * from mws_us where asin='$asin' and updated between '%s' and '%s'", $str_time_24hours_before, $str_time_start) ;
+    //var_dump($sql);
+    $records = mwsQuery($sql);
+    return count($records);
+}
+
+
 
 function analyzeAlertInfo($data)
 {
@@ -291,8 +355,8 @@ function analyzeAlertInfo($data)
         $asin_str = str_replace("'", "", $aAsins[$i]);
         $last_index = count($prices) - 1;
 
-        $base_price = $prices[0][$sku_index];
-        $increase_price = $prices[$last_index][$sku_index];
+        $increase_price = $prices[0][$sku_index];
+        $base_price = $prices[$last_index][$sku_index];
         $perstange = (($increase_price - $base_price) / $base_price) * 100;
 
         $dtime1 = $prices[0]['dtime2'];
