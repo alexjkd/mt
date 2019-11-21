@@ -1,7 +1,14 @@
 <?php
 include_once(dirname(__FILE__) . "/../lib/functions.php");
 //include_once(dirname(__FILE__) . "/../lib/phplot.6.1.0.php");
-
+//SR,URL,Model,Tier,Assignee,Top3Comp,Top3Keywords,3MonthBSRGoal,RecentNegativeReviews
+define("CSV_URL",1);
+define("CSV_MODE",2);
+define("CSV_TIER",3);
+define("CSV_ASSIGNEE",4);
+define("CSV_TOP3COM",5);
+define("CSV_BSR",7);
+    
 define("EMAIL_RECEPIENTS", 'John@iSpringFilter.com');
 define("PERIODS", '2 years,1 years,6 months,3 months,30 days,7 days,120 hours,24 hours');
 define('TooltipHeaders', 'rank1|rank2|reviews|avgrating|price');
@@ -14,7 +21,7 @@ $table = 'asin_' . $region . '_numbers';
 $table_rank1 = 'mws_' . $region;
 $aColors = array('red', 'blue', 'DarkGreen', 'orange', 'cyan', 'SkyBlue', 'green', 'SlateBlue', 'DimGrey', 'gold', 'grey', 'ivory', 'PeachPuff');
 $image_width = 1380;
-
+$BSR =array();
 $period = '24 hours';
 if (isset($_GET['period'])) $period = str_replace('+', ' ', $_GET['period']); //echo '<li>'. $period ;
 switch (1) {
@@ -303,8 +310,6 @@ function retriveAlertInfo()
             if (isset($tmp) && count($tmp) > 0) {
                 $ret = array_merge($tmp, $ret);
             }
-            //retriveAlertFromDB($group, array('avgrating'));
-            //retriveAlertFromDB($group, array('reviews'));
         }
     }
     return $ret;
@@ -333,14 +338,33 @@ function check_mws($asin, $sku_names)
     return count($records);
 }
 
+function find_range($key, $asin, $data)
+{
+    $i = 0;
+    $key_start ='';
+    $key_end ='';
 
+    foreach($data as $entry) {
+        if($entry['asin'] == $asin ) {
+            if($i == 0) {
+                $key_start = $entry[$key];
+            }
+            $key_end = $entry[$key];
+        }
+    }
+    return $key_start . " → " . $key_end;
+}
 
 function analyzeAlertInfo($data)
 {
+    global $BSR;
+
     $prices = $data[0];
     $ret = array();
     $aAsins = array();
     $aSkus = array();
+    $review_rating = $data[3];
+
     if (isset($data[1])) {
         $aSkus = explode(',', $data[1]);
     }
@@ -358,7 +382,10 @@ function analyzeAlertInfo($data)
         $increase_price = $prices[0][$sku_index];
         $base_price = $prices[$last_index][$sku_index];
         $perstange = (($increase_price - $base_price) / $base_price) * 100;
-
+        $reviews = find_range('reviews',$asin_str,$data[3]);
+        $rating = find_range('avgrating',$asin_str,$data[3]);
+        $bsr = $BSR[$asin_str];
+        //var_dump($reviews);
         $dtime1 = $prices[0]['dtime2'];
         $dtime2 = $prices[$last_index]['dtime2'];
         //var_dump($perstange);
@@ -368,12 +395,15 @@ function analyzeAlertInfo($data)
             } else {
                 $percentage_str = sprintf("$%-01.2f - $%.2f (<span style=\"color:red;\"><strong>↓</strong></span>)%.2f%%", $base_price, $increase_price, abs($perstange));
             }
-
+            $interval = abs(round((strtotime($dtime1) - strtotime($dtime2))/3600));
             $ret[] = array(
                 "ASIN" => $asin_str,
-                "SKU" => $sku_str,
-                "Dtime" => "$dtime1 - $dtime2",
+                "SKU" => "<a target=_blank  href=\"http://wh1.czyusa.com/mt/dashboard.php?items=$asin_str\">". $sku_str . "</a>",
+                "Dtime" => "$dtime1 → $dtime2 ($interval hours)",
                 "Percentage" => $percentage_str,
+                "BSR"=>$bsr,
+                "Reviews"=>"$reviews",
+                "Rating"=>"$rating",
             );
         }
     }
@@ -493,14 +523,18 @@ function retriveAlertFromDB($group, $aH, $alter = '')
             $graph_tip[3] = $sAsins;
         }
         if ($h == 'price') {
-            $sql1 = "SELECT dtime,dtime2 $q1Sub FROM (SELECT date_format(from_unixtime(time+$timeoffset),'$dateFormat') as dtime,date_format(from_unixtime(time+$timeoffset),'%b-%d %l:00%p') as dtime2, asin $qBaseSub FROM $table WHERE asin IN ('$sAsins') AND $h > 0 AND $date_sql GROUP BY asin, dtime,dtime2 HAVING $sh>0 ) a GROUP BY dtime,dtime2 ORDER BY dtime DESC"; //limit 2
+            $sql1 = "SELECT dtime,dtime2 $q1Sub FROM (SELECT date_format(from_unixtime(time+$timeoffset),'$dateFormat') as dtime,date_format(from_unixtime(time+$timeoffset),'%b-%d %l:00%p') as dtime2, asin,ROUND(avg(price),2) as pce FROM $table WHERE asin IN ('$sAsins') AND $h > 0 AND $date_sql GROUP BY asin, dtime,dtime2 HAVING pce>0 ) a GROUP BY dtime,dtime2 ORDER BY dtime DESC"; //limit 2
+            $sql2 = "SELECT date_format(from_unixtime(time+$timeoffset),'$dateFormat') as dtime, asin,price,reviews,avgrating FROM $table WHERE asin IN ('$sAsins') AND price > 0 AND $date_sql GROUP BY asin, dtime,price,reviews,avgrating HAVING price>0  order by dtime desc";
+            $ReviewRating = sqlquery($sql2);
             $PriceData = sqlquery($sql1);
             $alert_data[0] = $PriceData;
             $alert_data[1] = $sSkus;
             $alert_data[2] = $sAsins;
+            $alert_data[3] = $ReviewRating;
             return analyzeAlertInfo($alert_data);
         }
-
+        if($h == 'reviews') {
+        }
         GroupPriceAvgratingEnd:
     }
 }
@@ -562,12 +596,13 @@ function retriveCmpetitorAlias()
 
 function getGroupsFromGoogleDoc($aAlias, $dataSrc)
 {
+    global $BSR;
     $aGroup = array();
     $csvFile = file($dataSrc);
     foreach ($csvFile as $line) {
         $csv_check_data = str_getcsv($line);
         if (isset($_GET['tier'])) {
-            if ($_GET['tier'] == $csv_check_data[3]) {
+            if ($_GET['tier'] == $csv_check_data[CSV_TIER]) {
                 $data[] = $csv_check_data;
             }
         } else {
@@ -580,12 +615,13 @@ function getGroupsFromGoogleDoc($aAlias, $dataSrc)
     }
     foreach ($data as $line) {
         //var_dump($line);
-        $csv_product_asin = substr($line[1], strrpos($line[1], '/') + 1);
+        $csv_product_asin = substr($line[CSV_URL], strrpos($line[CSV_URL], '/') + 1);
         $csv_product_len = strlen($csv_product_asin);
         if ($csv_product_len == 10 && !preg_match('/[^A-Za-z0-9]/', $csv_product_asin)) {
             $product_asin = $csv_product_asin;
         }
-        $line = $line[5];
+        $BSR[$product_asin]=$line[CSV_BSR];
+        $line = $line[CSV_TOP3COM];
         if (empty($line)) {
             continue;
         }
@@ -620,6 +656,7 @@ function getGroupsFromGoogleDoc($aAlias, $dataSrc)
         }
         $aGroup[] = $line_str;
     }
+    //var_dump($BSR);
     return $aGroup;
 }
 

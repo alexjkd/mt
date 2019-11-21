@@ -24,8 +24,11 @@ $pageNum = empty($_GET["pageNum"])?1:$_GET["pageNum"];
     $html_table .= "<tr><th>ASIN</th>";
     $html_table .= "<th>SKU</th>";
     $html_table .= "<th>Dtime</th>";
-    $html_table .= "<th>Percentage</th></tr>";
-
+    $html_table .= "<th>Percentage</th>";
+    $html_table .= "<th>BSR</th>";
+    $html_table .= "<th>Reviews</th>";
+    $html_table .= "<th>Rating</th>";
+    $html_table .= "</tr>";
     /*Dynamically generating rows & columns*/
     $sendmail = false;
     for ($i = 0; $i < count($data); $i++) {
@@ -38,6 +41,11 @@ $pageNum = empty($_GET["pageNum"])?1:$_GET["pageNum"];
         $html_table .= "<td align=\"center\">" . $data[$i]["SKU"] . "</td>";
         $html_table .= "<td align=\"center\">" . $data[$i]["Dtime"] . "</td>";
         $html_table .= "<td align=\"center\">" . $data[$i]["Percentage"] . "</td>";
+        $html_table .= "<td align=\"center\">" . $data[$i]["BSR"] . "</td>";
+        $html_table .= "<td align=\"center\">" . $data[$i]["Reviews"] . "</td>";
+        $html_table .= "<td align=\"center\">" . $data[$i]["Rating"] . "</td>";
+
+ 
         $html_table .= "</tr>";
     }
     
