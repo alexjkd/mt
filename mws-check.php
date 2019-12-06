@@ -13,7 +13,7 @@ require 'vendor/autoload.php';
 $mail = new PHPMailer(true);
 $to = 'john@ispringfilter.com';
 $cc = 'melon.bao@outlook.com';
-$subject = 'Price Changing Alert';
+$subject = 'Fetch Data Error Alert';
 $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "Content-type:text/html;charset=iso 8859-1" . "\r\n";
 $headers .= 'From: 123filter' . "\r\n";
@@ -44,8 +44,9 @@ try {
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
     $mail->Port       = 587;                                    // TCP port to connect to
 
+    //MWS Data Fetch <offermon@ispringfilter.com>
     //Recipients
-    $mail->setFrom('offermon@ispringfilter.com', '123filter');
+    $mail->setFrom('offermon@ispringfilter.com', 'MWS Data Fetch');
     $mail->addAddress($to, 'John');     // Add a recipient
     $mail->addAddress($cc, 'Melon');  
     $ch = curl_init();

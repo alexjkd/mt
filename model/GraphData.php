@@ -232,10 +232,36 @@ if (!empty($_GET)) {
         $asin_alias = googleGroupToAsinAlais($googleGroup);
         $mws_records = array();
         $i =0;
+        $thresholds = 0;
+        $start_time=date("h:i:s");
+        $time_point1="02:00:00";
+        $time_point2="08:00:00";
+        $time_point3="14:00:00";
+        $time_point4="20:00:00";
+        if(strtotime($start_time) >= strtotime($time_point1) &&
+            strtotime($start_time) < strtotime($time_point2))
+        {
+            $thresholds = 16;
+        }
+        else if (strtotime($start_time) >= strtotime($time_point2) &&
+            strtotime($start_time)< strtotime($time_point3))
+        {
+            $thresholds = 20;
+        }
+        else if (strtotime($start_time) >= strtotime($time_point3) &&
+            strtotime($start_time) < strtotime($time_point4))
+        {
+            $thresholds = 0;
+        }
+        else if (strtotime($start_time) >= strtotime($time_point4) &&
+            strtotime($start_time) < strtotime($time_point1))
+        {
+            $thresholds = 10;
+        }
         foreach($asin_alias as $asin_alia) {
             $items =  explode(",",$asin_alia);
             $num = check_mws($items[0], $items[1]);
-            if($num < 0 or $num >= 24) {
+            if($num < 0 or $num >= $thresholds) {
                 continue;
             }
             $tmp['asin'] = $items[0];
@@ -334,6 +360,7 @@ function check_mws($asin, $sku_names)
 
     $sql = sprintf("select * from mws_us where asin='$asin' and updated between '%s' and '%s'", $str_time_24hours_before, $str_time_start) ;
     //var_dump($sql);
+    usleep(rand(100, 3000));
     $records = mwsQuery($sql);
     return count($records);
 }
@@ -391,15 +418,19 @@ function analyzeAlertInfo($data)
         //var_dump($perstange);
         if (is_float($perstange) && !is_infinite($perstange) && !is_nan($perstange) && $perstange <> 0 && abs($perstange) < 100) {
             if ($perstange > 0) {
-                $percentage_str = sprintf("$%-01.2f - $%.2f (<span style=\"color:blue;\"><strong>↑</strong></span>)%.2f%%", $base_price, $increase_price, $perstange);
+                $price_str = sprintf("$%-01.2f → $%.2f (<strong>$%-01.2f</strong>)",$base_price, $increase_price, $increase_price - $base_price);
+                $percentage_str = sprintf("(<span style=\"color:blue;\"><strong>↑</strong></span>)%.2f%%",  $perstange);
             } else {
-                $percentage_str = sprintf("$%-01.2f - $%.2f (<span style=\"color:red;\"><strong>↓</strong></span>)%.2f%%", $base_price, $increase_price, abs($perstange));
+                $price_str = sprintf("$%-01.2f → $%.2f(<strong>-$%-01.2f</strong>)",$base_price, $increase_price, abs($increase_price - $base_price));
+
+                $percentage_str = sprintf("(<span style=\"color:red;\"><strong>↓</strong></span>)%.2f%%", abs($perstange));
             }
             $interval = abs(round((strtotime($dtime1) - strtotime($dtime2))/3600));
             $ret[] = array(
                 "ASIN" => $asin_str,
                 "SKU" => "<a target=_blank  href=\"http://wh1.czyusa.com/mt/dashboard.php?items=$asin_str\">". $sku_str . "</a>",
                 "Dtime" => "$dtime1 → $dtime2 ($interval hours)",
+                "Price" =>$price_str,
                 "Percentage" => $percentage_str,
                 "BSR"=>$bsr,
                 "Reviews"=>"$reviews",

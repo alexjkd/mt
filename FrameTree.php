@@ -40,13 +40,15 @@
     <ul>
         <li class="isFolder isExpanded" title="Bookmarks">Amazon.COM KPI
 					<ul>
-                            <li>&nbsp;<a target="FrameContent" href="alerts-tablefilter.php">Alerts</a></li>
-                            <li>&nbsp;<a target="FrameContent" href="./scraper/review.php">Reviews</a></li>
-							<li class="isFolder isExpanded" title="SKUs by Owner">SKUs by Tier
+							<li>&nbsp;<a target="FrameContent" href="alerts-tablefilter.php">Alerts</a></li>
+               <li>&nbsp;<a target="FrameContent" href="./scraper/review.php">Reviews</a></li>
+								<li><a target="FrameContent" href="http://czyusa.com/mt/dashboard.20191111.php?list=top30">US BSR</a></li>
+								<li><a target="FrameContent" href="http://czyusa.com/editor_scTu4UTrYBGA4arkTBPvfA7Uu5cn14jfhMcMvQ91i8.php?file=amazon.us_asin_sku_competitors.20191111.txt">Edit US BSR Groups</a></li>
+								<li class="isFolder isExpanded" title="SKUs by Owner">SKUs by Tier
 								<ul>
 								<?php
 								for($Tier=1;$Tier<=4;$Tier++) {
-									echo '<li><a target="FrameContent" title="Daily average of last 30 days" href="dashboard.php?period=30days&tier='. $Tier .'">Tier '. $Tier ."</li>";
+									echo '<li><a target="FrameContent" title="Daily average of last 30 days" href="dashboard.php?period=30days&tier='. $Tier .'">Tier '. $Tier ."</a></li>";
 								}
 								?>
 								</ul>
@@ -60,7 +62,7 @@
 									$aAssignees = explode(',','John,Sonny,Rosa,Wency,Li,Jerry,Peter');
 									array_multisort($aAssignees);
 									foreach($aAssignees as $assignee) {
-										echo '<li><a target="FrameContent" title="Daily average of last 30 days" href="dashboard.php?period=30days&assignee='. $assignee .'">'. ucwords($assignee) ."</li>";
+										echo '<li><a target="FrameContent" title="'. $assignee .': Daily average of last 30 days" href="dashboard.php?period=30days&assignee='. $assignee .'">'. ucwords($assignee) ."</a></li>";
 									}
 								?>
 							</ul>
