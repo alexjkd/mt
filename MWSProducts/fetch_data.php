@@ -1,11 +1,33 @@
 <?php
-
+/*
+ *array(9) {
+  [0]=>
+  string(2) "SR"
+  [1]=>
+  string(5) "Model"
+  [2]=>
+  string(4) "Tier"
+  [3]=>
+  string(8) "Assignee"
+  [4]=>
+  string(3) "URL"
+  [5]=>
+  string(8) "Top3Comp"
+  [6]=>
+  string(12) "Top3Keywords"
+  [7]=>
+  string(22) "QuarterBSRGoal(Amazon)"
+  [8]=>
+  string(29) "Bi-weekly Days Goal Reached
+"
+}
+ * */
 require_once 'db.php';
 require_once ('mws_config.php');
-define("CSV_URL",1);
-  define("CSV_MODEL",2);
-  define("CSV_TIER",3);
-  define("CSV_ASSIGNEE",4);
+define("CSV_URL",4);
+  define("CSV_MODEL",1);
+  define("CSV_TIER",2);
+  define("CSV_ASSIGNEE",3);
   define("CSV_TOP3COMP",5);
 
 
@@ -262,11 +284,12 @@ function invokeGetCompetitivePricing(MarketplaceWebServiceProducts_Interface $se
 				$price_data['currency'] = ($currencyCode[0]->nodeValue == "USD") ? 1 : 0;
 				$csv_array_datas = $GLOBALS['csv_array'];
 				foreach($csv_array_datas as $csv_array_data){
-					$sku_comp_data = strpos($csv_array_data[4],$product_data['asin']);
-					$url_comp_data = strpos($csv_array_data[0],$product_data['asin']);
+                    if(empty($csv_array_data[CSV_URL])) continue;
+                    $sku_comp_data = strpos($csv_array_data[CSV_TOP3COMP],$product_data['asin']);
+					$url_comp_data = strpos($csv_array_data[CSV_URL],$product_data['asin']);
 					if($sku_comp_data > -1 || $url_comp_data > -1 ){
-						$price_data['tier'] = $csv_array_data[2];
-						$price_data['owner'] = $csv_array_data[3];
+						$price_data['tier'] = $csv_array_data[CSV_TIER];
+						$price_data['owner'] = $csv_array_data[CSV_ASSIGNEE];
 						$price_data['csv_id'] = 0;
 						break;
 					}
@@ -319,8 +342,11 @@ function config_service_url($region,$serviceUrl,$marketplace_id){
      }
   
      foreach($data as $csv_array_data){
+         //var_dump($csv_array_data);  
+       if (empty($csv_array_data[CSV_URL])) continue;
        $csv_product_asin = substr($csv_array_data[CSV_URL], strrpos($csv_array_data[CSV_URL], '/') + 1);
        $csv_product_len = strlen($csv_product_asin);
+       if(empty($csv_product_asin)) continue;
        if($csv_product_len == 10 && !preg_match('/[^A-Za-z0-9]/', $csv_product_asin)){
 	       //$csv_array_data[CSV_TOP3COMP] = $csv_product_asin;
 	 $csv_owner[$csv_product_asin] = $csv_array_data[CSV_ASSIGNEE];
@@ -398,6 +424,7 @@ for($i = 0; $i < $array_length; $i++){
 	$region = $url_array[$i]['region'];
 	$serviceUrl = $url_array[$i]['url'];
     $marketplace_id = $url_array[$i]['id'];
+    //var_dump($serviceUrl);
     config_service_url($region,$serviceUrl,$marketplace_id);
 	//echo '<hr>';
 	

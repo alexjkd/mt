@@ -22,22 +22,39 @@ $sGoogleTsv = file_get_contents($google_doc);
 //~ echo $sGoogleTsv;
 $q=$qSub=$asin=$asinList=$sAssignees='';
 $top3coms = array();
+$headers = array();
+$index = 0;
 foreach (explode("\n",$sGoogleTsv) as $line) {
 	$aTsv = explode("\t",trim($line));
-	//~ print_r($aTsv);
-	$sr = $aTsv[0];
-	$url = $aTsv[1];
-	$quarterBsrGoal = $aTsv[7];
+	// ~print_r($aTsv);
+  if ($index == 0) {
+    foreach($aTsv as $columnName) {
+      $headers[$columnName] = $index;
+      $index ++;
+    }
+    continue;
+  } 
+  if(empty($headers)) {
+    print_r(var_dump($headers));
+    break;
+  }else{
+    if(!checkHeaders($headers)) {
+      return;
+    }   
+  }
+	$sr = $aTsv[$headers["SR"]];
+	$url = $aTsv[$headers["URL"]];
+	$quarterBsrGoal = $aTsv[$headers["QuarterBSRGoal(Amazon)"]];
 	if (preg_match('/B0\w{8}/',$url,$mAsin) and preg_match('/(\d+)/',$quarterBsrGoal,$mGoal)) {
 		$asin = $mAsin[0];
 		$goal = $mGoal[1] * 1000;
 		//echo "<li>$url -- $asin";
-		$model = $aTsv[2];
-		$tier = $aTsv[3];
-		$assignee = $aTsv[4];
-		$top3comp = $aTsv[5];
-		$top3keywords = $aTsv[6];
-		$recentNegativeReviews = $aTsv[8];
+		$model = $aTsv[$headers["Model"]];
+		$tier = $aTsv[$headers["Tier"]];
+		$assignee = $aTsv[$headers["Assignee"]];
+		$top3comp = $aTsv[$headers["Top3Comp"]];
+		$top3keywords = $aTsv[$headers["Top3Keywords"]];
+		$recentNegativeReviews = $aTsv[$headers["RecentNegativeReviews"]];
 		$qSub .= ",SUM(IF(asin = '$asin' and dailyAvg < $goal ,1,0)) AS '$assignee,$model,$tier,$asin,$quarterBsrGoal'";
 		$asinList .= ",'". $asin ."'";
 		if (stristr($sAssignees,$assignee)==FALSE) $sAssignees .= $assignee .',';
@@ -145,6 +162,42 @@ function getItemsByAsin($aAsin, $aTop3Coms) {
         $sItems = $sItems . $sGroups[$sAsin]. ";";
     }    
     return $sItems;
+}
+
+function checkHeaders($aHeaders) {
+    $field_name =  '';
+    if($aHeaders["SR"] < 0) {
+       $field_name = "SR"; 
+    }
+    if($aHeaders["Model"] < 0) {
+       $field_name = "Model"; 
+    }
+    if($aHeaders["URL"] < 0) {
+       $field_name = "URL"; 
+    }
+    if($aHeaders["Tier"] < 0) {
+       $field_name = "Tier"; 
+    }
+    if($aHeaders["Assignee"] < 0) {
+       $field_name = "Assignee"; 
+    }
+    if($aHeaders["Top3Comp"] < 0) {
+       $field_name = "Top3Comp"; 
+    }
+    if($aHeaders["Top3Keywords"] < 0) {
+       $field_name = "Top3Keywords"; 
+    }
+    if($aHeaders["QuarterBSRGoal(Amazon)"] < 0) {
+       $field_name = "QuarterBSRGoal(Amazon)"; 
+    }
+    if($aHeaders["RecentNegativeReviews"] < 0) {
+       $field_name = "RecentNegativeReviews"; 
+    }
+    if (strlen($field_name) > 0) {
+        print_r($field_name . " not found in Google Doc!");
+        return false;
+    } 
+    return true;   
 }
 
 ?>
